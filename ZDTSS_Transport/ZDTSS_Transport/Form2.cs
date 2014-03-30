@@ -71,14 +71,14 @@ namespace ZDTSS_Transport
 
         private bool SaveDataToDB()
         {
-            SqlConnection databaseCon = new SqlConnection(@"Data Source=NAGYZE-PC\SQLEXPRESS; Initial Catalog=Transport;Integrated Security=True");
+            SqlConnection databaseCon = new SqlConnection(@"Data Source=NAGYZE-PC\SQLEXPRESS; Initial Catalog=ZDTSS_Transport;Integrated Security=True");
             SqlCommand dbCom = databaseCon.CreateCommand();
             
             databaseCon.Open();
 
             if (IsInDB(databaseCon)==false)//check if the username is already in the database
             {
-                dbCom.CommandText = "INSERT INTO users(firstname, lastname, username, password) VALUES (@firstname, @lastname, @username, @password)";
+                dbCom.CommandText = "INSERT INTO users(first_name, last_name, username, password) VALUES (@firstname, @lastname, @username, @password)";
 
                 //using tranzaction, to roll-back if an error occurs
                 SqlTransaction tx = databaseCon.BeginTransaction();

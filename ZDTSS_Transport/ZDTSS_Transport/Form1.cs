@@ -31,7 +31,7 @@ namespace ZDTSS_Transport
 
             if (UserValidate())
             {
-                Main main = new Main();
+                AdminMainScreen main = new AdminMainScreen();
                 main.Show(this);
                 this.Hide();
             }
@@ -49,7 +49,7 @@ namespace ZDTSS_Transport
             String username = textBox1.Text;
             String password = textBox2.Text;
 
-            SqlConnection databaseCon = new SqlConnection(@"Data Source=NAGYZE-PC\SQLEXPRESS; Initial Catalog=ZDTSS_Transport;Integrated Security=True");
+            SqlConnection databaseCon = new SqlConnection(@"Data Source=DAROACH-PC\SQLEXPRESS; Initial Catalog=ZDTSS_Transport;Integrated Security=True");
             SqlCommand dbCom = databaseCon.CreateCommand();
             databaseCon.Open();
             dbCom.CommandText = "SELECT * FROM users WHERE username='" + username + "' AND password='"+password+"'";

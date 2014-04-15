@@ -11,7 +11,8 @@
     <RootNamespace>ZDTSS_Transport</RootNamespace>
     <AssemblyName>ZDTSS_Transport</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -32,6 +33,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ZDTSS_Transport.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,6 +67,23 @@
     </Compile>
     <Compile Include="EditProfile.Designer.cs">
       <DependentUpon>EditProfile.cs</DependentUpon>
+    <Compile Include="AdminCommandHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCommandHistory.Designer.cs">
+      <DependentUpon>AdminCommandHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminCommandUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCommandUpdate.Designer.cs">
+      <DependentUpon>AdminCommandUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMainScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainScreen.Designer.cs">
+      <DependentUpon>AdminMainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -125,6 +146,14 @@
     <EmbeddedResource Include="EditProfile.resx">
       <DependentUpon>EditProfile.cs</DependentUpon>
       <SubType>Designer</SubType>
+    <EmbeddedResource Include="AdminCommandHistory.resx">
+      <DependentUpon>AdminCommandHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminCommandUpdate.resx">
+      <DependentUpon>AdminCommandUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminMainScreen.resx">
+      <DependentUpon>AdminMainScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -162,6 +191,7 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

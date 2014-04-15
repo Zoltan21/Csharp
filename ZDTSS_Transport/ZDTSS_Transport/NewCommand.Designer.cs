@@ -183,6 +183,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "NewCommand";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewCommand";
             this.ResumeLayout(false);
             this.PerformLayout();

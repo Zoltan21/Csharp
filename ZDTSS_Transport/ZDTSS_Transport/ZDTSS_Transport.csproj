@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A9B9BC59-5131-4D82-84AD-52B7B6A4CACE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Cities.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="EditCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCommand.Designer.cs">
+      <DependentUpon>EditCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProfile.Designer.cs">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,11 +76,18 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Launcher.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCommands.Designer.cs">
+      <DependentUpon>ManageCommands.cs</DependentUpon>
     </Compile>
     <Compile Include="NewCommand.cs">
       <SubType>Form</SubType>
@@ -78,6 +103,29 @@
     <Compile Include="ReportCommand.Designer.cs">
       <DependentUpon>ReportCommand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Route.cs" />
+    <Compile Include="Users.cs" />
+    <Compile Include="Van.cs" />
+    <Compile Include="ViewCommand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCommand.Designer.cs">
+      <DependentUpon>ViewCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewStatus.Designer.cs">
+      <DependentUpon>ViewStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ware.cs" />
+    <EmbeddedResource Include="EditCommand.resx">
+      <DependentUpon>EditCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProfile.resx">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageCommands.resx">
+      <DependentUpon>ManageCommands.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewCommand.resx">
       <DependentUpon>NewCommand.cs</DependentUpon>
@@ -103,6 +154,14 @@
     <EmbeddedResource Include="ReportCommand.resx">
       <DependentUpon>ReportCommand.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewCommand.resx">
+      <DependentUpon>ViewCommand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewStatus.resx">
+      <DependentUpon>ViewStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

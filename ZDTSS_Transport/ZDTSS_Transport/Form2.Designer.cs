@@ -1,6 +1,6 @@
 ﻿namespace ZDTSS_Transport
 {
-    partial class Form2
+    partial class Register
     {
         /// <summary>
         /// Required designer variable.
@@ -163,7 +163,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form2
+            // Register
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(340, 331);
@@ -173,7 +173,7 @@
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form2";
+            this.Name = "Register";
             this.Text = "Register";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

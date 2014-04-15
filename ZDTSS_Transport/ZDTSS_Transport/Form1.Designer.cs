@@ -1,6 +1,6 @@
 ﻿namespace ZDTSS_Transport
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -104,11 +104,10 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "ZDTSS Transport";
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.BackgroundImage = global::ZDTSS_Transport.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(388, 306);
             this.Controls.Add(this.label3);
@@ -118,7 +117,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "Login";
             this.Text = "ZDTSS Transport";
             this.ResumeLayout(false);
             this.PerformLayout();

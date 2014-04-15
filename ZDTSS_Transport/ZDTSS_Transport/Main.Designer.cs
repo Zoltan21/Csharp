@@ -34,10 +34,9 @@
             this.viewPreviousCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.commandStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commandStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,12 +74,12 @@
             this.viewPreviousCommandsToolStripMenuItem.Name = "viewPreviousCommandsToolStripMenuItem";
             this.viewPreviousCommandsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.viewPreviousCommandsToolStripMenuItem.Text = "View Previous Commands";
+            this.viewPreviousCommandsToolStripMenuItem.Click += new System.EventHandler(this.viewPreviousCommandsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editProfileToolStripMenuItem,
-            this.editCommandToolStripMenuItem});
+            this.editProfileToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -88,14 +87,9 @@
             // editProfileToolStripMenuItem
             // 
             this.editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editProfileToolStripMenuItem.Text = "Edit Profile";
-            // 
-            // editCommandToolStripMenuItem
-            // 
-            this.editCommandToolStripMenuItem.Name = "editCommandToolStripMenuItem";
-            this.editCommandToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.editCommandToolStripMenuItem.Text = "Manage Command";
+            this.editProfileToolStripMenuItem.Click += new System.EventHandler(this.editProfileToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -105,17 +99,18 @@
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
             // 
-            // commandStatusToolStripMenuItem
-            // 
-            this.commandStatusToolStripMenuItem.Name = "commandStatusToolStripMenuItem";
-            this.commandStatusToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.commandStatusToolStripMenuItem.Text = "Command Status";
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // commandStatusToolStripMenuItem
+            // 
+            this.commandStatusToolStripMenuItem.Name = "commandStatusToolStripMenuItem";
+            this.commandStatusToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.commandStatusToolStripMenuItem.Text = "Command Status";
+            this.commandStatusToolStripMenuItem.Click += new System.EventHandler(this.commandStatusToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -127,6 +122,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -142,9 +138,8 @@
         private System.Windows.Forms.ToolStripMenuItem viewPreviousCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editCommandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem commandStatusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commandStatusToolStripMenuItem;
     }
 }

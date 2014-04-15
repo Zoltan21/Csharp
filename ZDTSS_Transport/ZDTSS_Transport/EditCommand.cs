@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ZDTSS_Transport
 {
-    public partial class NewCommand : Form
+    public partial class EditCommand : Form
     {
-        public NewCommand()
+        public EditCommand()
         {
             InitializeComponent();
         }
@@ -19,10 +19,12 @@ namespace ZDTSS_Transport
         private void button1_Click(object sender, EventArgs e)
         {
             ReportCommand reportCom = new ReportCommand(); //moving to the next form
-            
+
             reportCom.Show(); //showing
             reportCom.MdiParent = this.MdiParent; //getting this new form under the Main parent
-            this.Close(); //hiding this 
+            this.Hide(); //hiding this 
         }
+
+     
     }
 }

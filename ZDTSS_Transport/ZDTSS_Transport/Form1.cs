@@ -14,6 +14,7 @@ namespace ZDTSS_Transport
     {
 
         Main main = new Main();
+        AdminMain adminMain=new AdminMain();
 
         public Login()
         {
@@ -35,7 +36,7 @@ namespace ZDTSS_Transport
            // if (UserValidate())
            // {
                 
-                main.Show(this);
+                adminMain.Show(this);
                 this.Hide();
             //}
             //else

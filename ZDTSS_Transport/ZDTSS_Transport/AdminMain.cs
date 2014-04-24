@@ -67,6 +67,11 @@ namespace ZDTSS_Transport
 
         }
 
+        private void manageCommandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

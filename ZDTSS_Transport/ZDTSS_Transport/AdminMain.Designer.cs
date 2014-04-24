@@ -39,13 +39,9 @@
             this.changeClientInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setClientToAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageCommandsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePriceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.routesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addRouteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pCommands = new System.Windows.Forms.Panel();
             this.lbCommands = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -53,15 +49,15 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pPrices = new System.Windows.Forms.Panel();
-            this.btnpClose = new System.Windows.Forms.Button();
-            this.btnChange = new System.Windows.Forms.Button();
             this.lbPrices = new System.Windows.Forms.ListBox();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnpClose = new System.Windows.Forms.Button();
             this.pRoutes = new System.Windows.Forms.Panel();
-            this.btnrClose = new System.Windows.Forms.Button();
-            this.btnChangeR = new System.Windows.Forms.Button();
-            this.btnAddR = new System.Windows.Forms.Button();
-            this.lbRoutes = new System.Windows.Forms.ListBox();
             this.btnDeleteR = new System.Windows.Forms.Button();
+            this.lbRoutes = new System.Windows.Forms.ListBox();
+            this.btnAddR = new System.Windows.Forms.Button();
+            this.btnChangeR = new System.Windows.Forms.Button();
+            this.btnrClose = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pCommands.SuspendLayout();
             this.pPrices.SuspendLayout();
@@ -148,62 +144,28 @@
             // 
             // manageCommandsToolStripMenuItem
             // 
-            this.manageCommandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.manageCommandsToolStripMenuItem1});
             this.manageCommandsToolStripMenuItem.Name = "manageCommandsToolStripMenuItem";
             this.manageCommandsToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.manageCommandsToolStripMenuItem.Text = " Commands";
-            // 
-            // manageCommandsToolStripMenuItem1
-            // 
-            this.manageCommandsToolStripMenuItem1.Name = "manageCommandsToolStripMenuItem1";
-            this.manageCommandsToolStripMenuItem1.Size = new System.Drawing.Size(182, 22);
-            this.manageCommandsToolStripMenuItem1.Text = "Manage Commands";
-            this.manageCommandsToolStripMenuItem1.Click += new System.EventHandler(this.manageCommandsToolStripMenuItem1_Click);
+            this.manageCommandsToolStripMenuItem.Click += new System.EventHandler(this.manageCommandsToolStripMenuItem_Click);
             // 
             // pricesToolStripMenuItem
             // 
-            this.pricesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePriceToolStripMenuItem});
             this.pricesToolStripMenuItem.Name = "pricesToolStripMenuItem";
             this.pricesToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.pricesToolStripMenuItem.Text = "Prices";
             // 
-            // changePriceToolStripMenuItem
-            // 
-            this.changePriceToolStripMenuItem.Name = "changePriceToolStripMenuItem";
-            this.changePriceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.changePriceToolStripMenuItem.Text = "Change Price";
-            this.changePriceToolStripMenuItem.Click += new System.EventHandler(this.changePriceToolStripMenuItem_Click);
-            // 
             // routesToolStripMenuItem
             // 
-            this.routesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addRouteToolStripMenuItem});
             this.routesToolStripMenuItem.Name = "routesToolStripMenuItem";
             this.routesToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.routesToolStripMenuItem.Text = "Routes";
             // 
-            // addRouteToolStripMenuItem
-            // 
-            this.addRouteToolStripMenuItem.Name = "addRouteToolStripMenuItem";
-            this.addRouteToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.addRouteToolStripMenuItem.Text = "Manage Routes";
-            this.addRouteToolStripMenuItem.Click += new System.EventHandler(this.addRouteToolStripMenuItem_Click);
-            // 
             // viewToolStripMenuItem
             // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.reportToolStripMenuItem.Text = "Report";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.viewToolStripMenuItem.Text = "Report";
             // 
             // pCommands
             // 
@@ -275,15 +237,13 @@
             this.pPrices.Size = new System.Drawing.Size(839, 290);
             this.pPrices.TabIndex = 5;
             // 
-            // btnpClose
+            // lbPrices
             // 
-            this.btnpClose.Location = new System.Drawing.Point(752, 255);
-            this.btnpClose.Name = "btnpClose";
-            this.btnpClose.Size = new System.Drawing.Size(75, 23);
-            this.btnpClose.TabIndex = 0;
-            this.btnpClose.Text = "Close";
-            this.btnpClose.UseVisualStyleBackColor = true;
-            this.btnpClose.Click += new System.EventHandler(this.btnpClose_Click);
+            this.lbPrices.FormattingEnabled = true;
+            this.lbPrices.Location = new System.Drawing.Point(13, 20);
+            this.lbPrices.Name = "lbPrices";
+            this.lbPrices.Size = new System.Drawing.Size(797, 199);
+            this.lbPrices.TabIndex = 2;
             // 
             // btnChange
             // 
@@ -294,13 +254,15 @@
             this.btnChange.Text = "Change price";
             this.btnChange.UseVisualStyleBackColor = true;
             // 
-            // lbPrices
+            // btnpClose
             // 
-            this.lbPrices.FormattingEnabled = true;
-            this.lbPrices.Location = new System.Drawing.Point(13, 20);
-            this.lbPrices.Name = "lbPrices";
-            this.lbPrices.Size = new System.Drawing.Size(797, 199);
-            this.lbPrices.TabIndex = 2;
+            this.btnpClose.Location = new System.Drawing.Point(752, 255);
+            this.btnpClose.Name = "btnpClose";
+            this.btnpClose.Size = new System.Drawing.Size(75, 23);
+            this.btnpClose.TabIndex = 0;
+            this.btnpClose.Text = "Close";
+            this.btnpClose.UseVisualStyleBackColor = true;
+            this.btnpClose.Click += new System.EventHandler(this.btnpClose_Click);
             // 
             // pRoutes
             // 
@@ -315,24 +277,22 @@
             this.pRoutes.Size = new System.Drawing.Size(839, 290);
             this.pRoutes.TabIndex = 3;
             // 
-            // btnrClose
+            // btnDeleteR
             // 
-            this.btnrClose.Location = new System.Drawing.Point(751, 254);
-            this.btnrClose.Name = "btnrClose";
-            this.btnrClose.Size = new System.Drawing.Size(75, 23);
-            this.btnrClose.TabIndex = 0;
-            this.btnrClose.Text = "Close";
-            this.btnrClose.UseVisualStyleBackColor = true;
-            this.btnrClose.Click += new System.EventHandler(this.btnrClose_Click);
+            this.btnDeleteR.Location = new System.Drawing.Point(454, 255);
+            this.btnDeleteR.Name = "btnDeleteR";
+            this.btnDeleteR.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteR.TabIndex = 4;
+            this.btnDeleteR.Text = "Delete";
+            this.btnDeleteR.UseVisualStyleBackColor = true;
             // 
-            // btnChangeR
+            // lbRoutes
             // 
-            this.btnChangeR.Location = new System.Drawing.Point(659, 254);
-            this.btnChangeR.Name = "btnChangeR";
-            this.btnChangeR.Size = new System.Drawing.Size(75, 23);
-            this.btnChangeR.TabIndex = 1;
-            this.btnChangeR.Text = "Change";
-            this.btnChangeR.UseVisualStyleBackColor = true;
+            this.lbRoutes.FormattingEnabled = true;
+            this.lbRoutes.Location = new System.Drawing.Point(13, 20);
+            this.lbRoutes.Name = "lbRoutes";
+            this.lbRoutes.Size = new System.Drawing.Size(804, 225);
+            this.lbRoutes.TabIndex = 3;
             // 
             // btnAddR
             // 
@@ -343,22 +303,24 @@
             this.btnAddR.Text = "Add";
             this.btnAddR.UseVisualStyleBackColor = true;
             // 
-            // lbRoutes
+            // btnChangeR
             // 
-            this.lbRoutes.FormattingEnabled = true;
-            this.lbRoutes.Location = new System.Drawing.Point(22, 17);
-            this.lbRoutes.Name = "lbRoutes";
-            this.lbRoutes.Size = new System.Drawing.Size(804, 225);
-            this.lbRoutes.TabIndex = 3;
+            this.btnChangeR.Location = new System.Drawing.Point(659, 254);
+            this.btnChangeR.Name = "btnChangeR";
+            this.btnChangeR.Size = new System.Drawing.Size(75, 23);
+            this.btnChangeR.TabIndex = 1;
+            this.btnChangeR.Text = "Change";
+            this.btnChangeR.UseVisualStyleBackColor = true;
             // 
-            // btnDeleteR
+            // btnrClose
             // 
-            this.btnDeleteR.Location = new System.Drawing.Point(454, 255);
-            this.btnDeleteR.Name = "btnDeleteR";
-            this.btnDeleteR.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteR.TabIndex = 4;
-            this.btnDeleteR.Text = "Delete";
-            this.btnDeleteR.UseVisualStyleBackColor = true;
+            this.btnrClose.Location = new System.Drawing.Point(751, 254);
+            this.btnrClose.Name = "btnrClose";
+            this.btnrClose.Size = new System.Drawing.Size(75, 23);
+            this.btnrClose.TabIndex = 0;
+            this.btnrClose.Text = "Close";
+            this.btnrClose.UseVisualStyleBackColor = true;
+            this.btnrClose.Click += new System.EventHandler(this.btnrClose_Click);
             // 
             // AdminMain
             // 
@@ -396,17 +358,13 @@
         private System.Windows.Forms.ToolStripMenuItem setClientToAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pricesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem morningJobsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changePriceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addRouteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.Panel pCommands;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ToolStripMenuItem manageCommandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageCommandsToolStripMenuItem1;
         private System.Windows.Forms.ListBox lbCommands;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Panel pPrices;

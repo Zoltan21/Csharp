@@ -68,6 +68,16 @@ namespace ZDTSS_Transport
         /// </summary>
         public void viewMorningJobs()
         {
+            //pseudocode for to make it easier
+
+            //1. step get the daily commands--use the date to select put everything into a list
+
+            //2. separatization :  if inter command (inside of the the region) 1 day to collect them 2. day to deliver them
+                                    //if not make 3 type of commands: 1:start to center-- 1. day, 2: center to ceter-- 2. day, 3: center to final 3.day
+                                   //putting into a list each of them
+            
+            //3. 
+
             throw new System.NotImplementedException();
         }
     }

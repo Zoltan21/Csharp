@@ -33,11 +33,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPasswordAgain = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtUserId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -82,11 +82,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtPasswordAgain);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtLastName);
+            this.panel1.Controls.Add(this.txtFirstName);
+            this.panel1.Controls.Add(this.txtUserId);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -97,42 +97,42 @@
             this.panel1.Size = new System.Drawing.Size(276, 239);
             this.panel1.TabIndex = 4;
             // 
-            // textBox5
+            // txtPasswordAgain
             // 
-            this.textBox5.Location = new System.Drawing.Point(158, 197);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PasswordChar = '*';
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtPasswordAgain.Location = new System.Drawing.Point(158, 197);
+            this.txtPasswordAgain.Name = "txtPasswordAgain";
+            this.txtPasswordAgain.PasswordChar = '*';
+            this.txtPasswordAgain.Size = new System.Drawing.Size(100, 20);
+            this.txtPasswordAgain.TabIndex = 9;
             // 
-            // textBox4
+            // txtPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(158, 157);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PasswordChar = '*';
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtPassword.Location = new System.Drawing.Point(158, 157);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 8;
             // 
-            // textBox3
+            // txtLastName
             // 
-            this.textBox3.Location = new System.Drawing.Point(158, 116);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtLastName.Location = new System.Drawing.Point(158, 116);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(100, 20);
+            this.txtLastName.TabIndex = 7;
             // 
-            // textBox2
+            // txtFirstName
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtFirstName.Location = new System.Drawing.Point(158, 64);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(100, 20);
+            this.txtFirstName.TabIndex = 6;
             // 
-            // textBox1
+            // txtUserId
             // 
-            this.textBox1.Location = new System.Drawing.Point(158, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtUserId.Location = new System.Drawing.Point(158, 22);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.Size = new System.Drawing.Size(100, 20);
+            this.txtUserId.TabIndex = 5;
             // 
             // label5
             // 
@@ -175,6 +175,7 @@
             this.MinimizeBox = false;
             this.Name = "Register";
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.Register_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -188,11 +189,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPasswordAgain;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

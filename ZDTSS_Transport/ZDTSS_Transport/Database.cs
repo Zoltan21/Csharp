@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ZDTSS_Transport
 {
     public class Database
     { //this is the default value, but it can be modified by the admin
         private string dbName = "ZDTSS_Transport";
-        private string serverName;
+        private string serverName="NagyZe-PC";
+        private SqlConnection sqlCon;
+
+        public SqlConnection SqlCon
+        {
+            get { return sqlCon; }
+        }
 
         public string DbName
         {
@@ -24,12 +32,26 @@ namespace ZDTSS_Transport
 
         public void connect()
         {
-            throw new System.NotImplementedException();
+
+            //connecting to the server
+            try
+            {
+                sqlCon = new SqlConnection(@"Data Source=" + serverName + @"\SQLEXPRESS ;Initial Catalog="+dbName+";Integrated Security=True");
+                sqlCon.Open();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void disconnect()
         {
-            throw new System.NotImplementedException();
+            if (sqlCon != null)
+            {
+                sqlCon.Close();
+            }
         }
 
 

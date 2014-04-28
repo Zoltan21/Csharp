@@ -12,8 +12,12 @@ namespace ZDTSS_Transport
 {
     public partial class Register : Form
     {
-        public Register()
+
+        User user;
+
+        public Register(User user)
         {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -46,8 +50,8 @@ namespace ZDTSS_Transport
 
         private bool CheckPasswd() //this method is used to check the correctness of the password
         {
-            String passwd = textBox4.Text;
-            String passwdCheck = textBox5.Text;
+            String passwd = txtPassword.Text;
+            String passwdCheck = txtPasswordAgain.Text;
             if (passwd == passwdCheck)
             {
                 return true;
@@ -60,7 +64,7 @@ namespace ZDTSS_Transport
 
         private bool Empty()
         {
-            if ((String.IsNullOrEmpty(textBox1.Text.Trim())) || (String.IsNullOrEmpty(textBox2.Text.Trim())) || (String.IsNullOrEmpty(textBox3.Text.Trim())) || (String.IsNullOrEmpty(textBox4.Text.Trim())))
+            if ((String.IsNullOrEmpty(txtUserId.Text.Trim())) || (String.IsNullOrEmpty(txtFirstName.Text.Trim())) || (String.IsNullOrEmpty(txtLastName.Text.Trim())) || (String.IsNullOrEmpty(txtPassword.Text.Trim())))
             {
                 return true;
             }
@@ -85,10 +89,10 @@ namespace ZDTSS_Transport
                 try
                 {
                     dbCom.Transaction = tx;
-                    dbCom.Parameters.AddWithValue("@firstname", textBox2.Text);
-                    dbCom.Parameters.AddWithValue("@lastname", textBox3.Text);
-                    dbCom.Parameters.AddWithValue("@username", textBox1.Text);
-                    dbCom.Parameters.AddWithValue("@password", textBox4.Text);
+                    dbCom.Parameters.AddWithValue("@firstname", txtFirstName.Text);
+                    dbCom.Parameters.AddWithValue("@lastname", txtLastName.Text);
+                    dbCom.Parameters.AddWithValue("@username", txtUserId.Text);
+                    dbCom.Parameters.AddWithValue("@password", txtPassword.Text);
                     dbCom.ExecuteNonQuery();
                     dbCom.Parameters.Clear();
                     //if it cannot do the commit than there will be an exception
@@ -113,7 +117,7 @@ namespace ZDTSS_Transport
         private bool IsInDB(SqlConnection databaseCon) //using the dataconnection
         {
             bool result; 
-            String username = textBox1.Text;
+            String username = txtUserId.Text;
 
             SqlCommand databaseCom = databaseCon.CreateCommand();
             databaseCom.CommandText = "SELECT * FROM users WHERE username="+"'"+username+"'";
@@ -129,6 +133,11 @@ namespace ZDTSS_Transport
         {
             this.Owner.Show();
             this.Close();
+        }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

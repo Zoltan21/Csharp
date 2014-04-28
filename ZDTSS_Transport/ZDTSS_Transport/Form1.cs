@@ -12,6 +12,7 @@ namespace ZDTSS_Transport
 {
     public partial class Login : Form
     {
+        private User user=new User();
 
         Main main = new Main();
         AdminMain adminMain=new AdminMain();
@@ -23,7 +24,7 @@ namespace ZDTSS_Transport
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Register register = new Register();
+            Register register = new Register(user);
             register.Show(this);
             this.Hide();
 

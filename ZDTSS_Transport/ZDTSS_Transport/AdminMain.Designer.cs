@@ -85,6 +85,7 @@
             this.morningJobsToolStripMenuItem.Name = "morningJobsToolStripMenuItem";
             this.morningJobsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.morningJobsToolStripMenuItem.Text = "Morning Jobs";
+            this.morningJobsToolStripMenuItem.Click += new System.EventHandler(this.morningJobsToolStripMenuItem_Click);
             // 
             // manageCarsToolStripMenuItem
             // 

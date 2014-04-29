@@ -16,6 +16,7 @@ namespace ZDTSS_Transport
         private DateTime startTime;
         private DateTime finishTime;
         private int commandPrice;
+        private int userId;
 
         public int CommandId
         {
@@ -69,6 +70,12 @@ namespace ZDTSS_Transport
         {
             get { return commandPrice; }
             set { commandPrice = value; }
+        }
+
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
         }
     }
 }

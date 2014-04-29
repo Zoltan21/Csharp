@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace ZDTSS_Transport
 {
     public class AdminController
     {
+        private Database database;
+
         /// <summary>
         /// delete, add, modify commands
         /// </summary>
@@ -68,17 +75,201 @@ namespace ZDTSS_Transport
         /// </summary>
         public void viewMorningJobs()
         {
-            //pseudocode for to make it easier
+            //pseudocode to make it easier
+
+            DataSet commandsDataSet = getYesterdaysCommands();
+            List<Command> commands = getCommandsList(commandsDataSet);
+
+            for (int i = 0; i < commands.Count; i++)
+            {
+                splitCommand(commands[i]); // updates the db and inserts
+                MessageBox.Show(commands[i].ToString());
+            }
+
+
+            //selecting the cities to check if they are in the same region or not
+
+            DataTable dt = new DataTable();
+
+            dt = commandsDataSet.Tables["commands"];
+
 
             //1. step get the daily commands--use the date to select put everything into a list
 
-            //2. separatization :  if inter command (inside of the the region) 1 day to collect them 2. day to deliver them
-                                    //if not make 3 type of commands: 1:start to center-- 1. day, 2: center to ceter-- 2. day, 3: center to final 3.day
-                                   //putting into a list each of them
-            
+            //2. separatization :  if intern command (inside of the the region) 1 day to collect them 2. day to deliver them
+            //if not make 3 type of commands: 1:start to center-- 1. day, 2: center to ceter-- 2. day, 3: center to final 3.day
+            //putting into a list each of them
+
             //3. 
 
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
+
+        private List<Command> getCommandsList(DataSet commandsDataSet)
+        {
+            //list of commands
+            List<Command> commands = new List<Command>();
+            DataTable dt = new DataTable();
+            dt = commandsDataSet.Tables["commands"];
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Command cmd = new Command();
+
+                cmd.CommandId = (int) dr["commandId"];
+                cmd.VanId = (int) dr["vanId"];
+                cmd.DriverId = (int) dr["driverId"];
+                cmd.WareId = (int) dr["wareId"];
+                cmd.StartCityId = (int) dr["startCityId"];
+                cmd.DestCityId = (int) dr["destCityId"];
+                cmd.StartTime = (DateTime) dr["startTime"];
+                cmd.FinishTime = (DateTime) dr["finishTime"];
+                cmd.CommandPrice = (int) dr["commandPrice"];
+                cmd.UserId = (int) dr["customerId"];
+
+                commands.Add(cmd);
+            }
+            return commands;
+        }
+
+        private DataSet getYesterdaysCommands()
+        {
+            //opening the connection with the database
+            database.SqlCon.Open();
+            DataSet ds = new DataSet();
+
+            SqlDataAdapter da = new SqlDataAdapter(
+                "SELECT * FROM commands WHERE startTime=" + DateTime.Now.AddDays(-1), database.SqlCon);
+            //getting the dataset from the adapter
+            da.Fill(ds, "commands");
+            //closing the connection
+            database.SqlCon.Close();
+
+            return ds;
+        }
+
+        private void splitCommand(Command command)
+        {
+            database.SqlCon.Open();
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            string startRegion = "", destRegion = " ";
+            int startRegionId = 0, destRegionId = 0;
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities", database.SqlCon);
+            //getting the dataset from the adapter
+            da.Fill(ds, "cities");
+            dt = ds.Tables["cities"];
+            //closing the connection
+            database.SqlCon.Close();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (int.Parse(dr["cityId"].ToString()) == command.StartCityId)
+                {
+                    startRegion = dr["region"].ToString();
+                }
+                else
+                {
+                    if (int.Parse(dr["cityId"].ToString()) == command.DestCityId)
+                    {
+                        MessageBox.Show(dr["region"].ToString());
+                        destRegion = dr["region"].ToString();
+                    }
+                }
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["region"].ToString() == startRegion)
+                {
+                    startRegionId = (int) dr["cityId"];
+                }
+                else
+                {
+                    if (dr["region"].ToString() == destRegion)
+                    {
+                        destRegionId = (int) dr["cityId"];
+                    }
+                }
+            }
+            SqlCommand cmd;
+            if (startRegion == destRegion)
+            {
+                //split into 2
+                //update database
+                if (command.StartCityId != startRegionId)
+                {
+                    //update the commands- start -> center
+                    cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
+                        database.SqlCon);
+                    {
+                        cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = startRegionId;
+                        cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    //creating new command  center -> destionation
+                    cmd =
+                        new SqlCommand(
+                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            database.SqlCon);
+                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                    cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
+                    cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
+                    cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
+                    cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                    cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
+                    cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+            else
+            {
+                //split into 3 
+                if (command.StartCityId != startRegionId)
+                {
+                    //update the commands- start -> center
+                    cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
+                        database.SqlCon);
+                    {
+                        cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = startRegionId;
+                        cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                //new command center to center
+                cmd =
+                    new SqlCommand(
+                        "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                        database.SqlCon);
+                cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
+                cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = destRegionId;
+                cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
+                cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
+                cmd.ExecuteNonQuery();
+                if (destRegionId != command.DestCityId) // if the destination is not the regionCenter
+                {
+                    //creating new command  center -> destionation
+                    cmd =
+                        new SqlCommand(
+                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            database.SqlCon);
+                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                    cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = destRegionId;
+                    cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
+                    cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(2);
+                    cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                    cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
+                    cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

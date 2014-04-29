@@ -11,9 +11,17 @@ namespace ZDTSS_Transport
 {
     public partial class Jobs : Form
     {
-        public Jobs()
+        private AdminController adminController;
+        public Jobs(AdminController adminC)
         {
             InitializeComponent();
+            adminController = adminC;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            adminController.viewMorningJobs();
         }
     }
 }

@@ -13,9 +13,11 @@ namespace ZDTSS_Transport
         [STAThread]
         static void Main()
         {
+
+            Controller controller=new Controller();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Login(controller));
         }
     }
 }

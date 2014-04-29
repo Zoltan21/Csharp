@@ -11,9 +11,11 @@ namespace ZDTSS_Transport
 {
     public partial class AdminMain : Form
     {
+        private AdminController adminController;
         public AdminMain()
         {
             InitializeComponent();
+            //adminController = adminC;
         }
 
       
@@ -70,6 +72,13 @@ namespace ZDTSS_Transport
         private void manageCommandsToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void morningJobsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Jobs morningJobs = new Jobs(adminController);
+            morningJobs.Show(this);
+            this.Hide();
         }
 
 

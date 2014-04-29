@@ -7,5 +7,12 @@ namespace ZDTSS_Transport
 {
     public class Controller
     {
+
+        public void launch()
+        {
+            Database databse=new Database();
+
+        }
+
     }
 }

@@ -15,11 +15,14 @@ namespace ZDTSS_Transport
         private User user=new User();
 
         Main main = new Main();
+        private Controller controller;
+        //AdminController adminController=new AdminController(database);
         AdminMain adminMain=new AdminMain();
 
-        public Login()
+        public Login(Controller ctr)
         {
             InitializeComponent();
+            controller = ctr;
         }
 
         private void button2_Click(object sender, EventArgs e)

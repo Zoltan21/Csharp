@@ -12,17 +12,17 @@ namespace ZDTSS_Transport
 {
     public partial class Login : Form
     {
-        private User user=new User();
+        Main main;
+        AdminMain adminMain;
+        User user;
+        Database database;
+        private AuthentficationController authController;
 
-        Main main = new Main();
-        private Controller controller;
-        //AdminController adminController=new AdminController(database);
-        AdminMain adminMain=new AdminMain();
-
-        public Login(Controller ctr)
+        public Login( Database database, User user)
         {
             InitializeComponent();
-            controller = ctr;
+            this.user = user;
+            this.database = database;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,25 +35,15 @@ namespace ZDTSS_Transport
         
         private void button1_Click(object sender, EventArgs e)
         {
-            //this button is responsible for the Login
-
-           // if (UserValidate())
-           // {
+            //it instantietate just one type of user or admin or client,, using authentification controller --> adminMain and adminController
                 
-                adminMain.Show(this);
-                this.Hide();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("ERROR! Username or Password is not correct!");
-            //}
-
-
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
+            //for Stoica --> here you have to use the methods in the AuthentificationController
+            authController=new AuthentficationController();
+            authController.login(textBox1.Text,textBox2.Text);
+            AdminController adminController=new AdminController(database);
+            adminMain=new AdminMain(adminController);
+            adminMain.Show(this);
+            this.Hide();
         }
 
         //private bool UserValidate()

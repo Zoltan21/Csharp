@@ -11,11 +11,12 @@ namespace ZDTSS_Transport
 {
     public partial class AdminMain : Form
     {
-        private AdminController adminController;
-        public AdminMain()
+        private AdminController adminController;// we just need to use this adminController
+
+        public AdminMain(AdminController adminController)
         {
             InitializeComponent();
-            //adminController = adminC;
+            this.adminController = adminController;
         }
 
       

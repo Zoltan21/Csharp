@@ -33,9 +33,9 @@ namespace ZDTSS_Transport
         /// <summary>
         /// using the db,
         /// </summary>
-        public int login(string username, string password)
+        public void login(string username, string password)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public void logout()

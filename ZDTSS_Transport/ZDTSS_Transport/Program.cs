@@ -13,11 +13,14 @@ namespace ZDTSS_Transport
         [STAThread]
         static void Main()
         {
+            //this objects are always there doesen't matter if there is a client or an admin
+            Database database = new Database();
+            database.connect();
+            User user=new User();
 
-            Controller controller=new Controller();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login(controller));
+            Application.Run(new Login(database, user));
         }
     }
 }

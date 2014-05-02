@@ -14,6 +14,12 @@ namespace ZDTSS_Transport
     {
         private Database database;
 
+
+        public AdminController(Database database)
+        {
+            this.database = database;
+        }
+
         /// <summary>
         /// delete, add, modify commands
         /// </summary>
@@ -75,14 +81,13 @@ namespace ZDTSS_Transport
         /// </summary>
         public void viewMorningJobs()
         {
-            //pseudocode to make it easier
 
             DataSet commandsDataSet = getYesterdaysCommands();
             List<Command> commands = getCommandsList(commandsDataSet);
 
             for (int i = 0; i < commands.Count; i++)
             {
-                splitCommand(commands[i]); // updates the db and inserts
+                splitCommand(commands[i]); // updates the db and insert the splitted elements
                 MessageBox.Show(commands[i].ToString());
             }
 
@@ -107,7 +112,7 @@ namespace ZDTSS_Transport
 
         private List<Command> getCommandsList(DataSet commandsDataSet)
         {
-            //list of commands
+            //pasing from dataSet to a list of commands
             List<Command> commands = new List<Command>();
             DataTable dt = new DataTable();
             dt = commandsDataSet.Tables["commands"];
@@ -117,13 +122,13 @@ namespace ZDTSS_Transport
                 Command cmd = new Command();
 
                 cmd.CommandId = (int) dr["commandId"];
-                cmd.VanId = (int) dr["vanId"];
-                cmd.DriverId = (int) dr["driverId"];
-                cmd.WareId = (int) dr["wareId"];
+                //cmd.VanId = (int) dr["vanId"]; --it is an empty field
+                //cmd.DriverId = (int) dr["driverId"]; --empty field
+                //cmd.WareId = (int) dr["wareId"];--empty field
                 cmd.StartCityId = (int) dr["startCityId"];
                 cmd.DestCityId = (int) dr["destCityId"];
                 cmd.StartTime = (DateTime) dr["startTime"];
-                cmd.FinishTime = (DateTime) dr["finishTime"];
+                //cmd.FinishTime = (DateTime) dr["finishTime"];--empty
                 cmd.CommandPrice = (int) dr["commandPrice"];
                 cmd.UserId = (int) dr["customerId"];
 
@@ -135,13 +140,23 @@ namespace ZDTSS_Transport
         private DataSet getYesterdaysCommands()
         {
             //opening the connection with the database
+            
             database.SqlCon.Open();
             DataSet ds = new DataSet();
-
-            SqlDataAdapter da = new SqlDataAdapter(
-                "SELECT * FROM commands WHERE startTime=" + DateTime.Now.AddDays(-1), database.SqlCon);
+            MessageBox.Show(DateTime.Today.AddDays(-1).ToString());
+           
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE startTime>= '"+DateTime.Today.AddDays(-1) +"' AND startTime< '"+DateTime.Today+"'", database.SqlCon);
             //getting the dataset from the adapter
-            da.Fill(ds, "commands");
+            try
+            {
+                da.Fill(ds, "commands");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            
             //closing the connection
             database.SqlCon.Close();
 
@@ -162,7 +177,6 @@ namespace ZDTSS_Transport
             da.Fill(ds, "cities");
             dt = ds.Tables["cities"];
             //closing the connection
-            database.SqlCon.Close();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -181,13 +195,13 @@ namespace ZDTSS_Transport
             }
             foreach (DataRow dr in dt.Rows)
             {
-                if (dr["region"].ToString() == startRegion)
+                if (dr["cityName"].ToString() == startRegion)
                 {
                     startRegionId = (int) dr["cityId"];
                 }
                 else
                 {
-                    if (dr["region"].ToString() == destRegion)
+                    if (dr["cityName"].ToString() == destRegion)
                     {
                         destRegionId = (int) dr["cityId"];
                     }
@@ -203,27 +217,41 @@ namespace ZDTSS_Transport
                     //update the commands- start -> center
                     cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
                         database.SqlCon);
+                    try
                     {
                         cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = startRegionId;
                         cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
                         cmd.ExecuteNonQuery();
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
 
                     //creating new command  center -> destionation
                     cmd =
                         new SqlCommand(
-                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            //"INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            "INSERT Into commands(startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
                             database.SqlCon);
-                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
-                    cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
-                    cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
-                    cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
-                    cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
-                    cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
-                    cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
-                    cmd.ExecuteNonQuery();
-                }
+                    try
+                    {
+                        //cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                        cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
+                        cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
+                        cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
+                        //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                        cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
+                        cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
 
+                        MessageBox.Show(ex.ToString());
+                    }
+
+                }
             }
             else
             {
@@ -242,13 +270,13 @@ namespace ZDTSS_Transport
                 //new command center to center
                 cmd =
                     new SqlCommand(
-                        "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                        "INSERT Into commands(startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
                         database.SqlCon);
-                cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                //cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
                 cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
                 cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = destRegionId;
                 cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
-                cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
                 cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
                 cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
                 cmd.ExecuteNonQuery();
@@ -257,18 +285,20 @@ namespace ZDTSS_Transport
                     //creating new command  center -> destionation
                     cmd =
                         new SqlCommand(
-                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            "INSERT Into commands(startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
                             database.SqlCon);
-                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                    //cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
                     cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = destRegionId;
                     cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
                     cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(2);
-                    cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
+                    //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
                     cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
                     cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
                     cmd.ExecuteNonQuery();
                 }
             }
+
+            database.SqlCon.Close();
         }
 
     }

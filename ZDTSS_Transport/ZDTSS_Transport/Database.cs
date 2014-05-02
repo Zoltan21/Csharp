@@ -9,8 +9,8 @@ namespace ZDTSS_Transport
 {
     public class Database
     { //this is the default value, but it can be modified by the admin
-        private string dbName = "ZDTSS_Transport";
-        private string serverName="NagyZe-PC";
+        private string dbName = "Gzi";
+        private string serverName=@"NAGYZE-PC\SQLEXPRESS";
         private SqlConnection sqlCon;
 
         public SqlConnection SqlCon
@@ -36,8 +36,8 @@ namespace ZDTSS_Transport
             //connecting to the server
             try
             {
-                sqlCon = new SqlConnection(@"Data Source=" + serverName + @"\SQLEXPRESS ;Initial Catalog="+dbName+";Integrated Security=True");
-                sqlCon.Open();
+                sqlCon = new SqlConnection(@"Data Source=" + serverName + " ;Initial Catalog="+dbName+";Integrated Security=True");
+                //sqlCon.Open();
             }
             catch (Exception ex)
             {

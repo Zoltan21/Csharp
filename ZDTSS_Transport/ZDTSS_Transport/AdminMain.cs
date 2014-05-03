@@ -17,68 +17,35 @@ namespace ZDTSS_Transport
         {
             InitializeComponent();
             this.adminController = adminController;
-        }
-
-      
-                
-        private void manageCommandsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            pCommands.Visible = true;
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            pCommands.Visible = false;
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            EditCommand ed = new EditCommand();
-            ed.Show(this);
-            this.Hide();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            NewCommand nc = new NewCommand();
-            nc.Show(this);
-            this.Hide();
-        }
-
-        private void changePriceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pPrices.Visible = true;
-        }
-
-        private void btnpClose_Click(object sender, EventArgs e)
-        {
-            pPrices.Visible = false;
-        }
-
-        private void btnrClose_Click(object sender, EventArgs e)
-        {
-            pRoutes.Visible = false;
-        }
-
-        private void addRouteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pRoutes.Visible = true;
-        }
-
-        private void allCommandsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        }     
+       
+        
 
         private void manageCommandsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Commands allCommands = new Commands(adminController);
+            allCommands.Show(this);
+            this.Hide();
         }
 
         private void morningJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Jobs morningJobs = new Jobs(adminController);
             morningJobs.Show(this);
+            this.Hide();
+        }
+
+        private void pricesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Prices allPrices = new Prices(adminController);
+            allPrices.Show(this);
+            this.Hide();
+        }
+
+        private void routesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Routes allRoutes = new Routes(adminController);
+            allRoutes.Show(this);
             this.Hide();
         }
 

@@ -9,8 +9,8 @@ namespace ZDTSS_Transport
 {
     public class Database
     { //this is the default value, but it can be modified by the admin
-        private string dbName = "Gzi";
-        private string serverName=@"NAGYZE-PC\SQLEXPRESS";
+        private string dbName = "ZDTSS_Transport";
+        private string serverName=@"(local)";
         private SqlConnection sqlCon;
 
         public SqlConnection SqlCon

@@ -79,6 +79,65 @@ namespace ZDTSS_Transport
         /// <summary>
         /// each morning calculates the optimal solution from the point of viewStatus of capacity and "travellin salesman" for the day
         /// </summary>
+        public void deleteRoute(int id)
+        {
+            database.SqlCon.Close();
+            database.SqlCon.Open();
+            string sqltext = "DELETE FROM routes WHERE routeId=" + id;
+            SqlCommand cmd = new SqlCommand(sqltext, database.SqlCon);
+            //cmd.CommandText = "DELETE FROM routes WHERE routeId=" + id;
+
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            database.SqlCon.Close();
+        }
+        public void deleteCommand(int id)
+        {
+            database.SqlCon.Close();
+            database.SqlCon.Open();
+            string sqltext = "DELETE FROM commands WHERE commandId=" + id;
+            SqlCommand cmd = new SqlCommand(sqltext, database.SqlCon);
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            database.SqlCon.Close();
+        }
+        public void deletePrice(int id)
+        {
+            database.SqlCon.Close();
+            database.SqlCon.Open();
+            string sqltext = "DELETE FROM prices WHERE p_Id=" + id;
+            SqlCommand cmd = new SqlCommand(sqltext, database.SqlCon);
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            database.SqlCon.Close();
+        }
+        public DataTable viewCommands()
+        {
+            database.SqlCon.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM commands", database.SqlCon);
+            sda.Fill(dt);
+            return dt;
+            database.SqlCon.Close();
+        }
+        public DataTable viewPrices()
+        {
+            database.SqlCon.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM prices", database.SqlCon);
+            sda.Fill(dt);
+            return dt;
+            database.SqlCon.Close();
+        }
+        public DataTable viewRoutes()
+        {
+            database.SqlCon.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM routes", database.SqlCon);
+            sda.Fill(dt);
+            return dt;
+            database.SqlCon.Close();
+        }
         public void viewMorningJobs()
         {
 

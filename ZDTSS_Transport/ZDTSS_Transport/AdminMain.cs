@@ -49,6 +49,13 @@ namespace ZDTSS_Transport
             this.Hide();
         }
 
+        private void manageCarsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminManageCars cars = new AdminManageCars();
+            cars.Show(this);
+            this.Hide();
+        }
+
 
     }
 }

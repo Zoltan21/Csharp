@@ -31,9 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.morningJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageCarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeClientInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,31 +67,10 @@
             // 
             // manageCarsToolStripMenuItem
             // 
-            this.manageCarsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCarToolStripMenuItem,
-            this.deleteCarToolStripMenuItem,
-            this.modifyCarToolStripMenuItem});
             this.manageCarsToolStripMenuItem.Name = "manageCarsToolStripMenuItem";
             this.manageCarsToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.manageCarsToolStripMenuItem.Text = "Cars";
-            // 
-            // addCarToolStripMenuItem
-            // 
-            this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
-            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.addCarToolStripMenuItem.Text = "Add Car";
-            // 
-            // deleteCarToolStripMenuItem
-            // 
-            this.deleteCarToolStripMenuItem.Name = "deleteCarToolStripMenuItem";
-            this.deleteCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.deleteCarToolStripMenuItem.Text = "Delete Car";
-            // 
-            // modifyCarToolStripMenuItem
-            // 
-            this.modifyCarToolStripMenuItem.Name = "modifyCarToolStripMenuItem";
-            this.modifyCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.modifyCarToolStripMenuItem.Text = "Modify Car";
+            this.manageCarsToolStripMenuItem.Click += new System.EventHandler(this.manageCarsToolStripMenuItem_Click);
             // 
             // manageClientsToolStripMenuItem
             // 
@@ -172,9 +148,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manageCarsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteCarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modifyCarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageClientsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteClientsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeClientInfoToolStripMenuItem;

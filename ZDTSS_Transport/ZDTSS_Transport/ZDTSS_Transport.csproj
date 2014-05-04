@@ -53,19 +53,7 @@
     <Compile Include="AdminMain.Designer.cs">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminManageCars.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminManageCars.Designer.cs">
-      <DependentUpon>AdminManageCars.cs</DependentUpon>
-    </Compile>
     <Compile Include="AuthentficationController.cs" />
-    <Compile Include="CarConfirmScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CarConfirmScreen.Designer.cs">
-      <DependentUpon>CarConfirmScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cities.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Command.cs" />
@@ -163,21 +151,11 @@
       <DependentUpon>ViewStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Ware.cs" />
-    <Compile Include="ZDTSS_TransportDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZDTSS_TransportDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Commands.resx">
       <DependentUpon>Commands.cs</DependentUpon>
-    <EmbeddedResource Include="AdminManageCars.resx">
-      <DependentUpon>AdminManageCars.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CarConfirmScreen.resx">
-      <DependentUpon>CarConfirmScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditCommand.resx">
       <DependentUpon>EditCommand.cs</DependentUpon>
@@ -229,7 +207,6 @@
     <EmbeddedResource Include="ViewStatus.resx">
       <DependentUpon>ViewStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
@@ -241,17 +218,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ZDTSS_TransportDataSet.xsc">
-      <DependentUpon>ZDTSS_TransportDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ZDTSS_TransportDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZDTSS_TransportDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ZDTSS_TransportDataSet.xss">
-      <DependentUpon>ZDTSS_TransportDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\background.jpg" />

@@ -45,121 +45,13 @@ namespace ZDTSS_Transport
         }
 
         /// <summary>
-        /// manage==create, update , delete - Simon
+        /// manage==create, update , delete
         /// </summary>
-        public void manageCars(string option, string vanID, string name, string speed, string weight, string volume, string consumption, string status)
+        public void manageCars()
         {
-            int id = Convert.ToInt32(vanID);
-            int sp = Convert.ToInt32(speed);
-            int w = Convert.ToInt32(weight);
-            int v = Convert.ToInt32(volume);
-            int c = Convert.ToInt32(consumption);
-            int st = Convert.ToInt32(status);
-            switch (option)
-            {
-                case "AddCar":
-                    {
-                        AddCar(name,sp,w,v,c,st);
-                        break;
-                    }
-                case "UpdateCar":
-                    {
-                        UpdateCar(id,name,sp,w,v,c,st);
-                        break;
-                    }
-                case "DeleteCar":
-                    {
-                        DeleteCar(id);
-                        break;
-                    }
-                default:
-                    break;
-            }
+            throw new System.NotImplementedException();
         }
-        //inserting cars into DB - Simon
-        private void AddCar(string name, int speed, int weight, int volume, int consumption, int status)
-        {
-            SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = @"Data Source=DAROACH-PC\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
-            sqlCon.Open();
-            SqlCommand cmd = new SqlCommand("INSERT Into vans(vanName, speed, loadCapKg, loadCapPallet, consumption, vanStatus) VALUES (@n, @speed, @kg, @p, @c, @status)", sqlCon);
-            cmd.Parameters.Add("@n", SqlDbType.Text).Value = name;
-            cmd.Parameters.Add("@speed", SqlDbType.Int).Value = speed;
-            cmd.Parameters.Add("@kg", SqlDbType.Int).Value = weight;
-            cmd.Parameters.Add("@p", SqlDbType.Int).Value = volume;
-            cmd.Parameters.Add("@c", SqlDbType.Int).Value = consumption;
-            cmd.Parameters.Add("@status", SqlDbType.Int).Value = status;
-            try
-            {
-                cmd.ExecuteNonQuery();
-                const string message = "New Car successfully added !";
-                const string caption = "Form Closing";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException ex)
-            {
-                string message = ex.Message.ToString();
-                const string caption = "Form Closing";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
-            sqlCon.Close();
-           
-        }
-        // Update function for cars - Simon
-        private void UpdateCar(int vanID ,string name, int speed, int weight, int volume, int consumption, int status)
-        {
-            SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = @"Data Source=DAROACH-PC\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
-            sqlCon.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE vans SET vanName=@n, speed=@sp, loadCapKg=@w, loadCapPallet=@v, consumption=@c, vanStatus=@st WHERE vanId LIKE @id", sqlCon);
-            cmd.Parameters.Add("@n", SqlDbType.Text).Value = name;
-            cmd.Parameters.Add("@sp", SqlDbType.Int).Value = speed;
-            cmd.Parameters.Add("@w", SqlDbType.Int).Value = weight;
-            cmd.Parameters.Add("@v", SqlDbType.Int).Value = volume;
-            cmd.Parameters.Add("@c", SqlDbType.Int).Value = consumption;
-            cmd.Parameters.Add("@st", SqlDbType.Int).Value = status;
-            cmd.Parameters.Add("@id", SqlDbType.Int).Value = vanID;
-            try
-            {
-                cmd.ExecuteNonQuery();
-                string msg = "Car sucessfully updated!";
-                string cap = "Form Closing";
-                var res = MessageBox.Show(msg, cap, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException ex)
-            {
-                string message = ex.Message.ToString();
-                const string caption = "Form Closing";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            sqlCon.Close();       
-        }
-        // not complete, error in the syntax - Simon
-        private void DeleteCar(int carID)
-        {
-           
-            SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = @"Data Source=DAROACH-PC\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
-            sqlCon.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM vans WHERE vanId LIKE @id");
-            cmd.Parameters.Add("@id", SqlDbType.Int).Value = carID;
-            cmd.Connection = sqlCon;
-            try
-            {
-                cmd.ExecuteNonQuery();
-                string msg = "Car sucessfully deleted!";
-                string cap = "Form Closing";
-                var res = MessageBox.Show(msg, cap, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (SqlException ex)
-            {
-                string message = ex.Message.ToString();
-                const string caption = "Form Closing";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            sqlCon.Close(); 
-        }
+
         /// <summary>
         /// manage==create, modify, delete
         /// </summary>

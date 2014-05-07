@@ -13,6 +13,9 @@ namespace ZDTSS_Transport
     {
         private AdminController adminController;// we just need to use this adminController
 
+        private Jobs morningJobs;
+        private Commands allCommands;
+
         public AdminMain(AdminController adminController)
         {
             InitializeComponent();
@@ -23,16 +26,47 @@ namespace ZDTSS_Transport
 
         private void manageCommandsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Commands allCommands = new Commands(adminController);
-            allCommands.Show(this);
-            this.Hide();
+            if (allCommands == null)
+            {
+                allCommands =new Commands(adminController);
+                allCommands.MdiParent = this;
+                allCommands.FormClosed += new FormClosedEventHandler(allCommands_FormClosed);
+                allCommands.Show();
+            }
+            else
+            {
+                allCommands.Activate();
+            }
+        }
+        void allCommands_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            allCommands = null;
+            //throw new NotImplementedException();
         }
 
         private void morningJobsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Jobs morningJobs = new Jobs(adminController);
-            morningJobs.Show(this);
-            this.Hide();
+
+
+            JobController jobController=new JobController(adminController.Database);
+
+            if (morningJobs == null)
+            {
+                morningJobs = new Jobs(jobController);
+                morningJobs.MdiParent = this;
+                morningJobs.FormClosed += new FormClosedEventHandler(morningJobs_FormClosed);
+                morningJobs.Show();
+            }
+            else
+            {
+                morningJobs.Activate();
+            }
+        }
+
+        void morningJobs_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            morningJobs = null;
+            //throw new NotImplementedException();
         }
 
         private void pricesToolStripMenuItem_Click(object sender, EventArgs e)

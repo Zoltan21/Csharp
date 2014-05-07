@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace ZDTSS_Transport
 {
-    public class Database
+    public  class Database
     { //this is the default value, but it can be modified by the admin
         private string dbName = "ZDTSS_Transport";
-        private string serverName=@"(local)";
+        private string serverName = @"NAGYZE-PC\SQLEXPRESS";
         private SqlConnection sqlCon;
 
         public SqlConnection SqlCon

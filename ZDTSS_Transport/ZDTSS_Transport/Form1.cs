@@ -41,9 +41,16 @@ namespace ZDTSS_Transport
             authController=new AuthentficationController();
             authController.login(textBox1.Text,textBox2.Text);
             AdminController adminController=new AdminController(database);
+            
             adminMain=new AdminMain(adminController);
             adminMain.Show(this);
+            adminMain.FormClosed += new FormClosedEventHandler(adminMain_FormClosed);
             this.Hide();
+        }
+
+        private void adminMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         //private bool UserValidate()

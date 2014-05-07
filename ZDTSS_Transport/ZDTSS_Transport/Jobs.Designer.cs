@@ -28,46 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lstRegions = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstType = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lstRegions
+            // 
+            this.lstRegions.FormattingEnabled = true;
+            this.lstRegions.Location = new System.Drawing.Point(12, 196);
+            this.lstRegions.Name = "lstRegions";
+            this.lstRegions.Size = new System.Drawing.Size(120, 95);
+            this.lstRegions.TabIndex = 2;
+            this.lstRegions.Visible = false;
+            this.lstRegions.SelectedIndexChanged += new System.EventHandler(this.lstRegions_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Regions";
+            // 
+            // lstType
+            // 
+            this.lstType.FormattingEnabled = true;
+            this.lstType.Items.AddRange(new object[] {
+            "extern",
+            "intern-Collect",
+            "intern-Divide"});
+            this.lstType.Location = new System.Drawing.Point(12, 34);
+            this.lstType.Name = "lstType";
+            this.lstType.Size = new System.Drawing.Size(120, 95);
+            this.lstType.TabIndex = 4;
+            this.lstType.SelectedIndexChanged += new System.EventHandler(this.lstType_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Type";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(34, 8);
+            this.dataGridView1.Location = new System.Drawing.Point(182, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(672, 282);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(736, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "SplitTest";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataGridView1.Size = new System.Drawing.Size(496, 256);
+            this.dataGridView1.TabIndex = 6;
             // 
             // Jobs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 302);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(868, 359);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lstType);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lstRegions);
             this.Name = "Jobs";
             this.Text = "Jobs";
+            this.Load += new System.EventHandler(this.Jobs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.ListBox lstRegions;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lstType;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
     }
 }

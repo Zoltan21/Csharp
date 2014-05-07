@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ZDTSS_Transport
 {
-    public class Ware
+    public class Ware:IComparable <Ware>
     {
         private int wareId;
         private string description;
@@ -34,6 +34,11 @@ namespace ZDTSS_Transport
         {
             get { return nrOfPallets; }
             set { nrOfPallets = value; }
+        }
+
+        public int CompareTo(Ware other)
+        {
+            return weightPerPallet*nrOfPallets;
         }
     }
 }

@@ -90,6 +90,7 @@
     <Compile Include="Commands.Designer.cs">
       <DependentUpon>Commands.cs</DependentUpon>
     </Compile>
+    <Compile Include="JobController.cs" />
     <Compile Include="Jobs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +124,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionsJob.cs" />
     <Compile Include="ReportCommand.cs">
       <SubType>Form</SubType>
     </Compile>

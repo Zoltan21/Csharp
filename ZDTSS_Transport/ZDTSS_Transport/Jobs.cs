@@ -45,11 +45,43 @@ namespace ZDTSS_Transport
                     }
                 }
                 dataGridView1.DataSource = jobController.convertToDatatable(cmdList);
-
+                dataGridColor();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
+        private void dataGridColor()
+        {
+            //each van has a different color
+            Random random = new Random();
+            //get the first van
+            int vanId = Convert.ToInt32(dataGridView1.Rows[0].Cells[3].Value);
+            Color color = Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+                
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[3].Value) == vanId)
+                {
+                    row.DefaultCellStyle.BackColor = color;
+                }
+                else
+                {
+                    //get the next van
+                    if (Convert.ToInt32(row.Cells[1].Value) != 0)
+                    {
+                        vanId = Convert.ToInt32(row.Cells[3].Value);
+                        color = Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+                        row.DefaultCellStyle.BackColor = color;
+                    }
+                    else
+                    {
+                        color = Color.White;
+                    }
+
+                }
             }
         }
 

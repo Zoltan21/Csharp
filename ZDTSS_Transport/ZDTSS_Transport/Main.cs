@@ -11,9 +11,13 @@ namespace ZDTSS_Transport
 {
     public partial class Main : Form
     {
-        public Main()
+        ClientController clientController;
+        User user;
+        public Main(ClientController clientController, User user)
         {
             InitializeComponent();
+            this.clientController = clientController;
+            this.user = user;
         }
 
         NewCommand newCommand;
@@ -22,7 +26,7 @@ namespace ZDTSS_Transport
         {
             if (newCommand == null)
             {
-                newCommand = new NewCommand();
+                newCommand = new NewCommand(clientController, user);
                 newCommand.MdiParent = this;
                 newCommand.FormClosed += new FormClosedEventHandler(newCommand_FormClosed);
                 newCommand.Show();
@@ -67,5 +71,6 @@ namespace ZDTSS_Transport
             viewStatus.MdiParent = this;
             viewStatus.Show();
         }
+
     }
 }

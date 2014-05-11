@@ -11,18 +11,46 @@ namespace ZDTSS_Transport
 {
     public partial class NewCommand : Form
     {
-        public NewCommand()
+        ClientController clientController;
+        User user;
+
+
+        public NewCommand(ClientController clientController,User user)
         {
             InitializeComponent();
+            this.clientController = clientController;
+            this.user = user;
+            init();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void init()
         {
-            ReportCommand reportCom = new ReportCommand(); //moving to the next form
-            
+            //initializing the components
+           List<City> cities=clientController.getCities();
+            //adding cities to the list
+           foreach(City city in cities)
+           {
+               cmbFromList.Items.Add(city.CityName);
+               cmbToList.Items.Add(city.CityName);
+           }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int startCityId = clientController.getCityId(cmbFromList.SelectedItem.ToString());
+            int destCityId = clientController.getCityId(cmbToList.SelectedItem.ToString());
+            Command command = clientController.makeNewCommand(startCityId, destCityId, Convert.ToDateTime(monthCalendar1.SelectionRange.Start.ToString()),
+                             user.UserId, txtDescription.Text, (int)nrKgPerPallet.Value, (int)nrNrOfPallets.Value);
+            ReportCommand reportCom = new ReportCommand(command, clientController); //moving to the next form
             reportCom.Show(); //showing
             reportCom.MdiParent = this.MdiParent; //getting this new form under the Main parent
-            this.Close(); //hiding this 
-        }
+            this.Close();
+
+            //
+        
+        } //hiding this 
+
+
+
     }
 }

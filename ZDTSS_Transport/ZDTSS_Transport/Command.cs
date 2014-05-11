@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ZDTSS_Transport
 {
-    public class Command
+    public class Command : IComparable<Command>
     {
         private int commandId;
         private int vanId;
@@ -14,9 +14,22 @@ namespace ZDTSS_Transport
         private int startCityId;
         private int destCityId;
         private DateTime startTime;
-        private DateTime finishTime;
         private int commandPrice;
         private int userId;
+        private int commandStatus;
+        private Ware ware;
+
+        public Ware Ware
+        {
+            get { return ware; }
+            set { ware = value; }
+        }
+
+        public int CommandStatus
+        {
+            get { return commandStatus; }
+            set { commandStatus = value; }
+        }
 
         public int CommandId
         {
@@ -60,12 +73,6 @@ namespace ZDTSS_Transport
             set { startTime = value; }
         }
 
-        public DateTime FinishTime
-        {
-            get { return finishTime; }
-            set { finishTime = value; }
-        }
-
         public int CommandPrice
         {
             get { return commandPrice; }
@@ -76,6 +83,12 @@ namespace ZDTSS_Transport
         {
             get { return userId; }
             set { userId = value; }
+        }
+
+        public int CompareTo(Command other)
+        {
+            //it sorts the Command by the product of warePallet and NrofPAllets
+            return ware.WeightPerPallet * ware.NrOfPallets;
         }
     }
 }

@@ -82,20 +82,21 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(182, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(496, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(1046, 384);
             this.dataGridView1.TabIndex = 6;
             // 
             // Jobs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 359);
+            this.ClientSize = new System.Drawing.Size(1232, 512);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstRegions);
             this.Name = "Jobs";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Jobs";
             this.Load += new System.EventHandler(this.Jobs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

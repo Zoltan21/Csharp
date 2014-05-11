@@ -59,7 +59,6 @@
     <Compile Include="Command.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="Driver.cs" />
     <Compile Include="EditCommand.cs">
       <SubType>Form</SubType>
     </Compile>

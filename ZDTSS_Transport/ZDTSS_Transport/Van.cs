@@ -10,10 +10,25 @@ namespace ZDTSS_Transport
         private int vanId;
         private string vanName;
         private int speed;
-        private int loadCapKg;
+        private long loadCapKg;
         private int loadCapPallet;
         private int consumption;
-        private int status;
+        private int vanStatus;
+        private string driver;
+        private int regionId;
+
+        public int RegionId
+        {
+            get { return regionId; }
+            set { regionId = value; }
+        }
+
+        public string Driver
+        {
+            get { return driver; }
+            set { driver = value; }
+        }
+        
 
         public int VanId
         {
@@ -33,7 +48,7 @@ namespace ZDTSS_Transport
             set { speed = value; }
         }
 
-        public int LoadCapKg
+        public long LoadCapKg
         {
             get { return loadCapKg; }
             set { loadCapKg = value; }
@@ -51,10 +66,10 @@ namespace ZDTSS_Transport
             set { consumption = value; }
         }
 
-        public int Status
+        public int VanStatus
         {
-            get { return status; }
-            set { status = value; }
+            get { return vanStatus; }
+            set { vanStatus = value; }
         }
     }
 }

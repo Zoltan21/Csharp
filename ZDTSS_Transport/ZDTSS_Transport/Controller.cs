@@ -10,7 +10,6 @@ namespace ZDTSS_Transport
 
         public void launch()
         {
-            Database databse=new Database();
 
         }
 

@@ -12,7 +12,6 @@ namespace ZDTSS_Transport
 {
     public class JobController
     {
-        private Database database;
         
         private List<RegionsJob> regionsJobs;
         private List<Command> externCommands;
@@ -20,16 +19,9 @@ namespace ZDTSS_Transport
         private List<City> regions;
 
 
-        public JobController(Database database)
+        public JobController()
         {
-            this.database = database;
             regions = getRegions();
-        }
-
-        public Database Database
-        {
-            get { return database; }
-            set { database = value; }
         }
 
         public List<RegionsJob> RegionsJobs
@@ -50,11 +42,9 @@ namespace ZDTSS_Transport
             set { regions = value; }
         }
 
-
         public void viewMorningJobs()
         {
-
-            DataSet commandsDataSet = getYesterdaysCommands();
+            DataSet commandsDataSet = getUnselectedCommands();
             List<Command> commands = getCommandsList(commandsDataSet);
 
             for (int i = 0; i < commands.Count; i++)
@@ -62,13 +52,17 @@ namespace ZDTSS_Transport
                 splitCommand(commands[i]); // updates the db and insert the splitted elements
                 //MessageBox.Show(commands[i].ToString());
             }
-
             getCommandsSeparately();//getting the commands for each region;
-
-            //1. step get the daily commands--use the date to select put everything into a list
-            //2. separatization :  if intern command (inside of the the region) 1 day to collect them 2. day to deliver them
-            //if not make 3 type of commands: 1:start to center-- 1. day, 2: center to ceter-- 2. day, 3: center to final 3.day
-            //putting into a list each of them
+            //list of all the jobs inside each region
+            foreach(RegionsJob rj in regionsJobs)
+            {
+                //sorting commands
+                rj.CollectCommandsList=sortingCommandByWare(rj.CollectCommandsList);
+                rj.DivideCommandsList=sortingCommandByWare(rj.DivideCommandsList);
+                //putting wares into the Vans
+                rj.CollectCommandsList=addingWaresToVan(rj.CollectCommandsList, rj.RegionId);
+                rj.DivideCommandsList = addingWaresToVan(rj.DivideCommandsList, rj.RegionId);
+            }
         }
 
         private List<Command> getCommandsList(DataSet commandsDataSet)
@@ -89,24 +83,25 @@ namespace ZDTSS_Transport
                 cmd.StartCityId = (int)dr["startCityId"];
                 cmd.DestCityId = (int)dr["destCityId"];
                 cmd.StartTime = (DateTime)dr["startTime"];
-                //cmd.FinishTime = (DateTime) dr["finishTime"];--empty
                 cmd.CommandPrice = (int)dr["commandPrice"];
                 cmd.UserId = (int)dr["customerId"];
+                cmd.CommandStatus=(int)dr["commandStatus"];
 
                 commands.Add(cmd);
             }
             return commands;
         }
 
-        private DataSet getYesterdaysCommands()
+        private DataSet getUnselectedCommands()
         {
             //opening the connection with the database
-
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataSet ds = new DataSet();
             //MessageBox.Show(DateTime.Today.AddDays(-1).ToString());
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE startTime>= '" + DateTime.Today.AddDays(-1) + "' AND startTime< '" + DateTime.Today + "'", Database.SqlCon);
+            //SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE startTime>= '" + DateTime.Today.AddDays(-1) + "' AND startTime< '" + DateTime.Today + "'", Database.sqlCon);
+            //selecting commands with date less than today
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE commandStatus=0 AND startTime<  '" + DateTime.Today + "'", Database.sqlCon);
             //getting the dataset from the adapter
             try
             {
@@ -114,26 +109,64 @@ namespace ZDTSS_Transport
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
+            }
+            //closing the connection
+            Database.sqlCon.Close();
+            return ds;
+        }
 
+        private void insertCommandIntoDb(Command command,int fromCityId,int toCityId, int days)
+        {
+            SqlCommand cmd =
+                        new SqlCommand(
+                //"INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
+                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,commandPrice,customerID,commandStatus) VALUES (@wareId,@startCityId,@destCityId,@startTime,@commandPrice,@customerID,@commandStatus)",
+                            Database.sqlCon);
+            try
+            {
+                cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
+                cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = fromCityId;
+                cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = toCityId;
+                cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = DateTime.Today.AddDays(days);
+                cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
+                cmd.Parameters.Add("@commandStatus", SqlDbType.Int).Value = command.CommandStatus;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void updateCommandInDb(Command command,int fromCityId)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
+                Database.sqlCon);
+            try
+            {
+                cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = fromCityId;
+                cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.ToString());
             }
 
-            //closing the connection
-            Database.SqlCon.Close();
-
-            return ds;
         }
 
         private void splitCommand(Command command)
         {
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
 
             string startRegion = "", destRegion = " ";
             int startRegionId = 0, destRegionId = 0;
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities", Database.SqlCon);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities", Database.sqlCon);
             //getting the dataset from the adapter
             da.Fill(ds, "cities");
             dt = ds.Tables["cities"];
@@ -165,50 +198,15 @@ namespace ZDTSS_Transport
                     destRegionId = (int)dr["cityId"];
                 }
             }
-            SqlCommand cmd;
             if (startRegion == destRegion)
             {
                 //split into 2
-                //update database
-                if ((command.StartCityId != startRegionId) &&(command.DestCityId!=startRegionId))
+                if ((command.DestCityId!=destRegionId)&&(command.StartCityId!=startRegionId))
                 {
                     //update the commands- start -> center
-                    cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
-                        Database.SqlCon);
-                    try
-                    {
-                        cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = startRegionId;
-                        cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-
+                    updateCommandInDb(command, startRegionId);
                     //creating new command  center -> destionation
-                    cmd =
-                        new SqlCommand(
-                        //"INSERT Into commands(wareId,startCityId,destCityId,startTime,finishTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@finishTime,@commandPrice,@customerID)",
-                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
-                            Database.SqlCon);
-                    try
-                    {
-                        cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
-                        cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
-                        cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
-                        cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
-                        //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
-                        cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
-                        cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.ToString());
-                    }
-
+                    insertCommandIntoDb(command, startRegionId, command.DestCityId, 1);
                 }
             }
             else
@@ -217,66 +215,35 @@ namespace ZDTSS_Transport
                 if (command.StartCityId != startRegionId)
                 {
                     //update the commands- start -> center
-                    cmd = new SqlCommand("UPDATE commands SET destCityId=@regionId WHERE commandId=@cmdId",
-                        Database.SqlCon);
-                    {
-                        cmd.Parameters.Add("@regionId", SqlDbType.Int).Value = startRegionId;
-                        cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = command.CommandId;
-                        cmd.ExecuteNonQuery();
-                    }
-
+                    updateCommandInDb(command, startRegionId);
                 }
                 //command -- center to center
-                if ((command.StartCityId != startRegionId) && (command.DestCityId != destRegionId))
+                if ((command.StartCityId != startRegionId) || (command.DestCityId != destRegionId))
                 {
-                    cmd =
-                        new SqlCommand(
-                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
-                            Database.SqlCon);
-                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
-                    cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = startRegionId;
-                    cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = destRegionId;
-                    cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(1);
-                    //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
-                    cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
-                    cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
-                    cmd.ExecuteNonQuery();
+                    insertCommandIntoDb(command, startRegionId, destRegionId, 1);
                 }
-                
                 
                 if (destRegionId != command.DestCityId) // if the destination is not the regionCenter
                 {
-                    //creating new command  center -> destionation
-                    cmd =
-                        new SqlCommand(
-                            "INSERT Into commands(wareId,startCityId,destCityId,startTime,commandPrice,customerID) VALUES (@wareId,@startCityId,@destCityId,@startTime,@commandPrice,@customerID)",
-                            Database.SqlCon);
-                    cmd.Parameters.Add("@wareId", SqlDbType.Int).Value = command.WareId;
-                    cmd.Parameters.Add("@startCityId", SqlDbType.Int).Value = destRegionId;
-                    cmd.Parameters.Add("@destCityId", SqlDbType.Int).Value = command.DestCityId;
-                    cmd.Parameters.Add("@startTime", SqlDbType.DateTime).Value = command.StartTime.AddDays(2);
-                    //cmd.Parameters.Add("@finishTime", SqlDbType.DateTime).Value = command.FinishTime;
-                    cmd.Parameters.Add("@commandPrice", SqlDbType.Int).Value = 0;
-                    cmd.Parameters.Add("@customerID", SqlDbType.Int).Value = command.UserId;
-                    cmd.ExecuteNonQuery();
+                    //command -- center -> destionation
+                    insertCommandIntoDb(command, destRegionId, command.DestCityId, 2);
                 }
             }
-
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
         }
 
-        private List<Van> getVansOrdered()
+        private List<Van> getVansOrdered(int regionId)
         {
             //getting the vans ordered by the loadCapacity*loadCapPallet
 
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataSet ds = new DataSet();
             DataTable dt = new DataTable();
 
             List<Van> vansList = new List<Van>();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vans ORDERED BY loadCapKg*loadCapPallet",
-                Database.SqlCon);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vans WHERE regionId = "+regionId+" AND vanStatus=1 ORDER BY loadCapKg*loadCapPallet DESC",
+                Database.sqlCon);
             //getting the dataset from the adapter
             da.Fill(ds, "vans");
             dt = ds.Tables["vans"];
@@ -287,28 +254,28 @@ namespace ZDTSS_Transport
                 Van van = new Van();
 
                 van.Consumption = (int)dr["consumption"];
-                van.LoadCapKg = (int)dr["loadCapKg"];
+                van.LoadCapKg = (long)dr["loadCapKg"];
                 van.LoadCapPallet = (int)dr["loadCapPallet"];
                 van.VanId = (int)dr["vanId"];
                 van.VanName = (string)dr["vanName"];
-                van.LoadCapKg = (int)dr["loadCapKg"];
                 van.Speed = (int)dr["speed"];
-                van.Status = (int)dr["status"];
+                van.VanStatus = (int)dr["vanStatus"];
+                van.Driver=(string)dr["driver"];
+                van.RegionId=(int)dr["regionId"];
 
                 vansList.Add(van);
 
             }
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
             return vansList;
         }
 
 
         private List<City> getRegions()
         {
-
-            database =new Database();
-            database.connect();
-            database.SqlCon.Open();
+            //database =new Database();
+            Database.connect();
+            Database.sqlCon.Open();
             
 
             DataSet ds = new DataSet();
@@ -317,7 +284,7 @@ namespace ZDTSS_Transport
             List<City> regions = new List<City>();
 
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities WHERE cityName LIKE region",
-                Database.SqlCon);
+                Database.sqlCon);
             //getting the dataset from the adapter
             da.Fill(ds, "cities");
             dt = ds.Tables["cities"];
@@ -335,7 +302,7 @@ namespace ZDTSS_Transport
                 regions.Add(region);
             }
 
-            database.SqlCon.Close();
+            Database.sqlCon.Close();
             return regions;
 
         }
@@ -350,7 +317,7 @@ namespace ZDTSS_Transport
             //database.SqlCon.Open();
             
             //getting yesterdays commands List
-            List<Command> commands=getCommandsList(getYesterdaysCommands());
+            List<Command> commands=getCommandsList(getUnselectedCommands());
 
             externCommands=new List<Command>();
 
@@ -382,21 +349,16 @@ namespace ZDTSS_Transport
             {
                 commands.Remove(command);
             }
-
-
             //previously the extern commands were deleted
 
             List<RegionsJob> jobForRegions=new List<RegionsJob>();
-
             foreach (City region in regions)
             {
                 RegionsJob rj=new RegionsJob();
                 //collect
                 List<Command> collectCmd=new List<Command>();
-                List<Ware> collectWares = new List<Ware>();
 
                 List<Command> divideCmd = new List<Command>();
-                List<Ware> divideWares=new List<Ware>();
 
                 Ware wr=new Ware();
 
@@ -407,7 +369,6 @@ namespace ZDTSS_Transport
                     {
                         collectCmd.Add(command);
                         wr=getWare(command.WareId);
-                        collectWares.Add(wr);
                         //commands.Remove(command);
                     }
 
@@ -415,25 +376,23 @@ namespace ZDTSS_Transport
                     {
                         wr=getWare(command.WareId);
                         divideCmd.Add(command);
-                        divideWares.Add(wr);
                         //commands.Remove(command);
                     }
                 }
 
                 //adding the list of commands for each region and also the list of wares
 
+                rj.RegionId = region.CityId;
                 rj.RegionName = region.CityName;
                 rj.CollectCommandsList= collectCmd;
-                rj.CollectWaresList = collectWares;
 
                 rj.DivideCommandsList = divideCmd;
-                rj.DivideWaresList = divideWares;
 
                 jobForRegions.Add(rj);
             }
             //END of command separatization
 
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
 
             RegionsJobs = jobForRegions;
             //what remains is to show the list of commands
@@ -446,7 +405,7 @@ namespace ZDTSS_Transport
             DataTable dt = new DataTable();
             //there has to be just one
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM wares WHERE wareId= "+wareId,
-                Database.SqlCon);
+                Database.sqlCon);
             //getting the dataset from the adapter
             da.Fill(ds, "wares");
             dt = ds.Tables["wares"];
@@ -459,8 +418,152 @@ namespace ZDTSS_Transport
                 ware.NrOfPallets = (int)dr["nrOfPallets"];
                 ware.WeightPerPallet = (int)dr["weightPerPallet"];
             }
-
             return ware;
+        }
+
+        private List<Command> addingWareToCommand(List<Command> commandList)
+        {
+            foreach (Command command in commandList)
+            {
+                Ware ware;
+                ware = getWare(command.WareId);
+                
+                command.Ware = ware;
+            }
+            return commandList;
+        }
+
+        private List<Command> sortingCommandByWare(List<Command> commandList)
+        {
+            addingWareToCommand(commandList);
+            //sorting the List by the ware---
+            commandList = commandList.OrderByDescending(x => x.Ware.WeightPerPallet * x.Ware.NrOfPallets * x.Ware.NrOfPallets)
+                  .ToList();
+            //commandList.Sort();
+            return commandList;
+        }
+
+        private List<Command> addingWaresToVan(List<Command> commandList, int regionId)
+        {
+            List<Van> vanList;
+            //getting the vans from that region 
+            vanList = getVansOrdered(regionId);
+
+            int i=0;
+
+            int maxCapKg = 0;
+            int maxCapP = 0;
+
+            foreach (Command command in commandList)
+            {
+
+                //getting each command and adding to a van
+                // till the van is full
+
+                int commandCapacity = (command.Ware.WeightPerPallet * command.Ware.NrOfPallets) * command.Ware.NrOfPallets;
+                int commandTotalKg=command.Ware.WeightPerPallet * command.Ware.NrOfPallets;
+                //firstly we got the total kg than the "weight" of the ware
+                //if ((filled + commandCapacity) < maxVanCapacity)
+                if ((maxCapKg+commandTotalKg<=vanList[i].LoadCapKg)&&(maxCapP+command.Ware.NrOfPallets<=vanList[i].LoadCapPallet))
+                {
+                    maxCapKg += commandTotalKg;
+                    maxCapP += command.Ware.NrOfPallets;
+                    //filling also the database and the list
+                    fillCommandsVanChangeStatus(vanList[i].VanId, command.CommandId);
+                    command.VanId = vanList[i].VanId;
+                    command.CommandStatus = 1;
+                }
+                else
+                {
+                    if (i < vanList.Count - 1)
+                    {
+                        i++;
+                        
+                        maxCapKg = 0;
+                        maxCapP = 0;
+
+                        maxCapKg += commandTotalKg;
+                        maxCapP += command.Ware.NrOfPallets;
+                        //filling the database and also the list
+                        fillCommandsVanChangeStatus(vanList[i].VanId, command.CommandId);
+                        command.VanId = vanList[i].VanId;
+                        command.CommandStatus = 1;
+                    }
+                    else
+                    {
+                        break;
+                        //if it arrives here== there is no more van
+                        //it needs to be checked if the other commands can be put into here or other 
+                    }
+                }
+            }
+            return commandList;
+        }
+
+        private void fillCommandsVanChangeStatus(int vanId, int commandId)
+        {
+            //putting "ware into a van"==filling van field in command; in DATABASE!!!
+            Database.sqlCon.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE commands SET vanId=@vanId, commandStatus=1  WHERE commandId=@cmdId",
+                Database.sqlCon);
+            try
+            {
+                cmd.Parameters.Add("@vanId", SqlDbType.Int).Value = vanId;
+                cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = commandId;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Database.sqlCon.Close();
+
+
+        }
+
+        private List<City> getCitiesInRegion(string regionName)
+        {
+            //getting cities from the region
+
+            //database =new Database();
+            Database.connect();
+            Database.sqlCon.Open();
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            List<City> regions = new List<City>();
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities WHERE region LIKE "+regionName,
+                Database.sqlCon);
+            //getting the dataset from the adapter
+            da.Fill(ds, "cities");
+            dt = ds.Tables["cities"];
+            //closing the connection
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                City region = new City();
+
+                region.CityId = (int)dr["cityId"];
+                region.CityName = (string)dr["cityName"];
+                region.Region = (string)dr["region"];
+                //region.Status = (int) dr["hq"];
+
+                regions.Add(region);
+            }
+
+            Database.sqlCon.Close();
+            return regions;
+
+
+        }
+
+        private void shortestPath(List<Command> commandList, int type)
+        {
+            //getting the cities which are in the list of commands
+            //type refers to inter collect--1 or divide--2 
+
         }
 
         public DataTable convertToDatatable<T>(List<T> data)
@@ -471,7 +574,10 @@ namespace ZDTSS_Transport
             for (int i = 0; i < props.Count; i++)
             {
                 PropertyDescriptor prop = props[i];
-                table.Columns.Add(prop.Name, prop.PropertyType);
+                //if (prop.Name.ToString() != "Ware")
+                //{
+                    table.Columns.Add(prop.Name, prop.PropertyType);
+                //}
             }
             object[] values = new object[props.Count];
             foreach (T item in data)

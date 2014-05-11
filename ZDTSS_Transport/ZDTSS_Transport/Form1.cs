@@ -12,40 +12,15 @@ namespace ZDTSS_Transport
 {
     public partial class Login : Form
     {
-        Main main;
-        AdminMain adminMain;
         User user;
-        Database database;
-        private AuthentficationController authController;
+        AuthentficationController authController;
 
-        public Login( Database database, User user)
+        public Login(User user, AuthentficationController authController)
         {
             InitializeComponent();
             this.user = user;
-            this.database = database;
-        }
+            this.authController = authController;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Register register = new Register(user);
-            register.Show(this);
-            this.Hide();
-
-        }
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //it instantietate just one type of user or admin or client,, using authentification controller --> adminMain and adminController
-                
-            //for Stoica --> here you have to use the methods in the AuthentificationController
-            authController=new AuthentficationController();
-            authController.login(textBox1.Text,textBox2.Text);
-            AdminController adminController=new AdminController(database);
-            
-            adminMain=new AdminMain(adminController);
-            adminMain.Show(this);
-            adminMain.FormClosed += new FormClosedEventHandler(adminMain_FormClosed);
-            this.Hide();
         }
 
         private void adminMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -53,22 +28,36 @@ namespace ZDTSS_Transport
             Application.Exit();
         }
 
-        //private bool UserValidate()
-        //{
-        //    bool result;
-        //    String username = textBox1.Text;
-        //    String password = textBox2.Text;
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //Login into the application
+            user = authController.login(txtUserName.Text, txtPassword.Text);
+            if (user != null)
+            {
+                if (user.Status == 0)
+                {
+                    ClientController clientController = new ClientController();
+                    Main main=new Main(clientController,user);
+                    main.Show(this);
+                    main.FormClosed += new FormClosedEventHandler(adminMain_FormClosed);
+                    this.Hide();
+                }
+                else
+                {
+                    AdminController adminController = new AdminController();
+                    AdminMain adminMain = new AdminMain(adminController);
+                    adminMain.Show(this);
+                    adminMain.FormClosed += new FormClosedEventHandler(adminMain_FormClosed);
+                    this.Hide();
+                }
+            }
+        }
 
-        //    //SqlConnection databaseCon = new SqlConnection(@"Data Source=NAGYZE-PC\SQLEXPRESS; Initial Catalog=Transport;Integrated Security=True");
-        //    //SqlCommand dbCom = databaseCon.CreateCommand();
-        //    //databaseCon.Open();
-        //    //dbCom.CommandText = "SELECT * FROM users WHERE username='" + username + "' AND password='"+password+"'";
-        //    //SqlDataReader dataRead = dbCom.ExecuteReader();
-
-        //    result = dataRead.Read();//return true if the set is not empty or false
-        //    dataRead.Close();
-
-        //    return result;  
-        //}
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Register register = new Register(authController);
+            register.Show(this);
+            this.Hide();
+        }
     }
 }

@@ -13,18 +13,6 @@ namespace ZDTSS_Transport
 {
     public class AdminController
     {
-        private Database database;
-
-        public AdminController(Database database)
-        {
-            this.database = database;
-        }
-
-        public Database Database
-        {
-            get { return database; }
-            set { database = value; }
-        }
 
         /// <summary>
         /// delete, add, modify commands
@@ -79,63 +67,63 @@ namespace ZDTSS_Transport
         /// </summary>
         public void deleteRoute(int id)
         {
-            Database.SqlCon.Close();
-            Database.SqlCon.Open();
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
             string sqltext = "DELETE FROM routes WHERE routeId=" + id;
-            SqlCommand cmd = new SqlCommand(sqltext, Database.SqlCon);
+            SqlCommand cmd = new SqlCommand(sqltext, Database.sqlCon);
             //cmd.CommandText = "DELETE FROM routes WHERE routeId=" + id;
 
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
         }
         public void deleteCommand(int id)
         {
-            Database.SqlCon.Close();
-            Database.SqlCon.Open();
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
             string sqltext = "DELETE FROM commands WHERE commandId=" + id;
-            SqlCommand cmd = new SqlCommand(sqltext, Database.SqlCon);
+            SqlCommand cmd = new SqlCommand(sqltext, Database.sqlCon);
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
         }
         public void deletePrice(int id)
         {
-            Database.SqlCon.Close();
-            Database.SqlCon.Open();
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
             string sqltext = "DELETE FROM prices WHERE p_Id=" + id;
-            SqlCommand cmd = new SqlCommand(sqltext, Database.SqlCon);
+            SqlCommand cmd = new SqlCommand(sqltext, Database.sqlCon);
             cmd.CommandType = CommandType.Text;
             cmd.ExecuteNonQuery();
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
         }
         public DataTable viewCommands()
         {
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM commands", Database.SqlCon);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM commands", Database.sqlCon);
             sda.Fill(dt);
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
             return dt;
             
         }
         public DataTable viewPrices()
         {
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM prices", Database.SqlCon);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM prices", Database.sqlCon);
             sda.Fill(dt);
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
             return dt;
             
         }
         public DataTable viewRoutes()
         {
-            Database.SqlCon.Open();
+            Database.sqlCon.Open();
             DataTable dt = new DataTable();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM routes", Database.SqlCon);
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM routes", Database.sqlCon);
             sda.Fill(dt);
-            Database.SqlCon.Close();
+            Database.sqlCon.Close();
             return dt;
             
         }

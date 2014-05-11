@@ -7,30 +7,30 @@ using System.Windows.Forms;
 
 namespace ZDTSS_Transport
 {
-    public  class Database
+    public static class Database
     { //this is the default value, but it can be modified by the admin
-        private string dbName = "ZDTSS_Transport";
-        private string serverName = @"NAGYZE-PC\SQLEXPRESS";
-        private SqlConnection sqlCon;
+        static string dbName = "ZDTSS_Transport";
+        static string serverName = @"NAGYZE-PC\SQLEXPRESS";
+        public static SqlConnection sqlCon;
 
-        public SqlConnection SqlCon
-        {
-            get { return sqlCon; }
-        }
+        //public SqlConnection SqlCon
+        //{
+        //    get { return sqlCon; }
+        //}
 
-        public string DbName
-        {
-            get { return dbName; }
-            set { dbName = value; }
-        }
+        //public string DbName
+        //{
+        //    get { return dbName; }
+        //    set { dbName = value; }
+        //}
 
-        public string ServerName
-        {
-            get { return serverName; }
-            set { serverName = value; }
-        }
+        //public string ServerName
+        //{
+        //    get { return serverName; }
+        //    set { serverName = value; }
+        //}
 
-        public void connect()
+        public static void connect()
         {
 
             //connecting to the server
@@ -46,7 +46,7 @@ namespace ZDTSS_Transport
             }
         }
 
-        public void disconnect()
+        public static void disconnect()
         {
             if (sqlCon != null)
             {

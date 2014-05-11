@@ -48,7 +48,7 @@ namespace ZDTSS_Transport
         {
 
 
-            JobController jobController=new JobController(adminController.Database);
+            JobController jobController=new JobController();
 
             if (morningJobs == null)
             {
@@ -56,6 +56,7 @@ namespace ZDTSS_Transport
                 morningJobs.MdiParent = this;
                 morningJobs.FormClosed += new FormClosedEventHandler(morningJobs_FormClosed);
                 morningJobs.Show();
+                morningJobs.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -82,7 +83,6 @@ namespace ZDTSS_Transport
             allRoutes.Show(this);
             this.Hide();
         }
-
 
     }
 }

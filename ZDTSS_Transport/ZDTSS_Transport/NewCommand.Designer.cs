@@ -30,24 +30,25 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbFromList = new System.Windows.Forms.ComboBox();
+            this.cmbToList = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.nrNrOfPallets = new System.Windows.Forms.NumericUpDown();
+            this.nrKgPerPallet = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nrNrOfPallets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrKgPerPallet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 29);
+            this.label1.Location = new System.Drawing.Point(63, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 0;
@@ -56,135 +57,157 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(258, 29);
+            this.label2.Location = new System.Drawing.Point(403, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "To:";
             // 
-            // comboBox1
+            // cmbFromList
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(36, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(108, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cmbFromList.FormattingEnabled = true;
+            this.cmbFromList.Location = new System.Drawing.Point(66, 45);
+            this.cmbFromList.Name = "cmbFromList";
+            this.cmbFromList.Size = new System.Drawing.Size(108, 21);
+            this.cmbFromList.Sorted = true;
+            this.cmbFromList.TabIndex = 2;
             // 
-            // comboBox2
+            // cmbToList
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(261, 54);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 3;
+            this.cmbToList.FormattingEnabled = true;
+            this.cmbToList.Location = new System.Drawing.Point(406, 45);
+            this.cmbToList.Name = "cmbToList";
+            this.cmbToList.Size = new System.Drawing.Size(121, 21);
+            this.cmbToList.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 110);
+            this.label3.Location = new System.Drawing.Point(63, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "good description: ";
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(226, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtDescription.Location = new System.Drawing.Point(258, 103);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(226, 20);
+            this.txtDescription.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 158);
+            this.label4.Location = new System.Drawing.Point(63, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Volume:";
+            this.label4.Text = "Nr Of Pallets:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 198);
+            this.label5.Location = new System.Drawing.Point(63, 194);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Mass:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(177, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(79, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(177, 191);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(79, 20);
-            this.textBox3.TabIndex = 9;
+            this.label5.Text = "Kg Per Pallet:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 239);
+            this.label6.Location = new System.Drawing.Point(63, 316);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Delivery Date:";
             // 
-            // textBox4
+            // btnNext
             // 
-            this.textBox4.Location = new System.Drawing.Point(166, 231);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(129, 20);
-            this.textBox4.TabIndex = 11;
+            this.btnNext.Location = new System.Drawing.Point(342, 440);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 12;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // button1
+            // monthCalendar1
             // 
-            this.button1.Location = new System.Drawing.Point(177, 320);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Next";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.monthCalendar1.Location = new System.Drawing.Point(257, 234);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 15;
             // 
-            // checkBox1
+            // nrNrOfPallets
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(166, 269);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "fragil";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.nrNrOfPallets.Location = new System.Drawing.Point(258, 147);
+            this.nrNrOfPallets.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nrNrOfPallets.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nrNrOfPallets.Name = "nrNrOfPallets";
+            this.nrNrOfPallets.Size = new System.Drawing.Size(61, 20);
+            this.nrNrOfPallets.TabIndex = 16;
+            this.nrNrOfPallets.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nrKgPerPallet
+            // 
+            this.nrKgPerPallet.Location = new System.Drawing.Point(258, 187);
+            this.nrKgPerPallet.Maximum = new decimal(new int[] {
+            1100,
+            0,
+            0,
+            0});
+            this.nrKgPerPallet.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nrKgPerPallet.Name = "nrKgPerPallet";
+            this.nrKgPerPallet.Size = new System.Drawing.Size(61, 20);
+            this.nrKgPerPallet.TabIndex = 17;
+            this.nrKgPerPallet.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // NewCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 355);
+            this.ClientSize = new System.Drawing.Size(694, 492);
             this.ControlBox = false;
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.nrKgPerPallet);
+            this.Controls.Add(this.nrNrOfPallets);
+            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbToList);
+            this.Controls.Add(this.cmbFromList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "NewCommand";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewCommand";
+            this.Text = "New Command";
+            ((System.ComponentModel.ISupportInitialize)(this.nrNrOfPallets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nrKgPerPallet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,17 +217,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbFromList;
+        private System.Windows.Forms.ComboBox cmbToList;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.NumericUpDown nrNrOfPallets;
+        private System.Windows.Forms.NumericUpDown nrKgPerPallet;
     }
 }

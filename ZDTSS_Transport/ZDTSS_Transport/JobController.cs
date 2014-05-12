@@ -60,7 +60,7 @@ namespace ZDTSS_Transport
                 rj.CollectCommandsList=sortingCommandByWare(rj.CollectCommandsList);
                 rj.DivideCommandsList=sortingCommandByWare(rj.DivideCommandsList);
                 //putting wares into the Vans
-                rj.CollectCommandsList=addingWaresToVan(rj.CollectCommandsList, rj.RegionId);
+                rj.CollectCommandsList = addingWaresToVan(rj.CollectCommandsList, rj.RegionId);
                 rj.DivideCommandsList = addingWaresToVan(rj.DivideCommandsList, rj.RegionId);
             }
         }
@@ -101,7 +101,7 @@ namespace ZDTSS_Transport
 
             //SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE startTime>= '" + DateTime.Today.AddDays(-1) + "' AND startTime< '" + DateTime.Today + "'", Database.sqlCon);
             //selecting commands with date less than today
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE commandStatus=0 AND startTime<  '" + DateTime.Today + "'", Database.sqlCon);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM commands WHERE commandStatus=0 AND startTime<='" + DateTime.Today + "'", Database.sqlCon);
             //getting the dataset from the adapter
             try
             {
@@ -448,6 +448,11 @@ namespace ZDTSS_Transport
             List<Van> vanList;
             //getting the vans from that region 
             vanList = getVansOrdered(regionId);
+            if (vanList.Count == 0)
+            {
+                //there is no available van
+                return commandList;
+            }
 
             int i=0;
 
@@ -460,11 +465,16 @@ namespace ZDTSS_Transport
                 //getting each command and adding to a van
                 // till the van is full
 
-                int commandCapacity = (command.Ware.WeightPerPallet * command.Ware.NrOfPallets) * command.Ware.NrOfPallets;
+                int commandCapacity =command.Ware.NrOfPallets;
                 int commandTotalKg=command.Ware.WeightPerPallet * command.Ware.NrOfPallets;
+                long vanKg = vanList[i].LoadCapKg;
+                int vanPallets = vanList[i].LoadCapPallet;
+
+
                 //firstly we got the total kg than the "weight" of the ware
                 //if ((filled + commandCapacity) < maxVanCapacity)
-                if ((maxCapKg+commandTotalKg<=vanList[i].LoadCapKg)&&(maxCapP+command.Ware.NrOfPallets<=vanList[i].LoadCapPallet))
+
+                if ((maxCapKg+commandTotalKg<=vanKg)&&(maxCapP+commandCapacity<=vanPallets))
                 {
                     maxCapKg += commandTotalKg;
                     maxCapP += command.Ware.NrOfPallets;
@@ -511,6 +521,17 @@ namespace ZDTSS_Transport
                 cmd.Parameters.Add("@vanId", SqlDbType.Int).Value = vanId;
                 cmd.Parameters.Add("@cmdId", SqlDbType.Int).Value = commandId;
                 cmd.ExecuteNonQuery();
+                //updating also the van status--it becomes busy-2
+                cmd = new SqlCommand("UPDATE vans SET vanStatus=2 WHERE vanId=@vanId", Database.sqlCon);
+                try
+                {
+                    cmd.Parameters.Add("@vanId", SqlDbType.Int).Value = vanId;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
             catch (Exception ex)
             {

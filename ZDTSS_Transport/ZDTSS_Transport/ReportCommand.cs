@@ -41,6 +41,8 @@ namespace ZDTSS_Transport
             //using client controller to save the new Command into the db
 
             clientController.insertCommandIntoDb(command);
+            command = null;
+            this.Close();
 
 
         }

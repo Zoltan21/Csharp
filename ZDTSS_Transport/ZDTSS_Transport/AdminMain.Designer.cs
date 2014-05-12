@@ -49,13 +49,13 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.morningJobsToolStripMenuItem,
+            this.manageCommandsToolStripMenuItem,
             this.manageCarsToolStripMenuItem,
             this.manageClientsToolStripMenuItem,
-            this.manageCommandsToolStripMenuItem,
             this.pricesToolStripMenuItem,
             this.routesToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.viewToolStripMenuItem,
+            this.morningJobsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(839, 24);
@@ -82,19 +82,19 @@
             // addCarToolStripMenuItem
             // 
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
-            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.addCarToolStripMenuItem.Text = "Add Car";
             // 
             // deleteCarToolStripMenuItem
             // 
             this.deleteCarToolStripMenuItem.Name = "deleteCarToolStripMenuItem";
-            this.deleteCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.deleteCarToolStripMenuItem.Text = "Delete Car";
             // 
             // modifyCarToolStripMenuItem
             // 
             this.modifyCarToolStripMenuItem.Name = "modifyCarToolStripMenuItem";
-            this.modifyCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modifyCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.modifyCarToolStripMenuItem.Text = "Modify Car";
             // 
             // manageClientsToolStripMenuItem

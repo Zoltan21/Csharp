@@ -61,12 +61,13 @@ namespace ZDTSS_Transport
             else
             {
                 morningJobs.Activate();
+                //morningJobs.Show();
             }
         }
 
         void morningJobs_FormClosed(object sender, FormClosedEventArgs e)
         {
-            morningJobs = null;
+            morningJobs=null;
             //throw new NotImplementedException();
         }
 

@@ -45,6 +45,8 @@ namespace ZDTSS_Transport
                     }
                 }
                 dataGridView1.DataSource = jobController.convertToDatatable(cmdList);
+                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                 dataGridColor();
             }
             catch (Exception ex)

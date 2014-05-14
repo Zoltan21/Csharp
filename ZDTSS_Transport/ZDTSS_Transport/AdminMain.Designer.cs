@@ -29,19 +29,15 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.morningJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageCarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyCarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeClientInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setClientToAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.routesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.morningJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +49,6 @@
             this.manageCarsToolStripMenuItem,
             this.manageClientsToolStripMenuItem,
             this.pricesToolStripMenuItem,
-            this.routesToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.morningJobsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -62,12 +57,12 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // morningJobsToolStripMenuItem
+            // manageCommandsToolStripMenuItem
             // 
-            this.morningJobsToolStripMenuItem.Name = "morningJobsToolStripMenuItem";
-            this.morningJobsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.morningJobsToolStripMenuItem.Text = "Morning Jobs";
-            this.morningJobsToolStripMenuItem.Click += new System.EventHandler(this.morningJobsToolStripMenuItem_Click);
+            this.manageCommandsToolStripMenuItem.Name = "manageCommandsToolStripMenuItem";
+            this.manageCommandsToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.manageCommandsToolStripMenuItem.Text = " Commands";
+            this.manageCommandsToolStripMenuItem.Click += new System.EventHandler(this.manageCommandsToolStripMenuItem_Click);
             // 
             // manageCarsToolStripMenuItem
             // 
@@ -82,55 +77,20 @@
             // addCarToolStripMenuItem
             // 
             this.addCarToolStripMenuItem.Name = "addCarToolStripMenuItem";
-            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.addCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addCarToolStripMenuItem.Text = "Add Car";
             // 
             // deleteCarToolStripMenuItem
             // 
             this.deleteCarToolStripMenuItem.Name = "deleteCarToolStripMenuItem";
-            this.deleteCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.deleteCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteCarToolStripMenuItem.Text = "Delete Car";
             // 
             // modifyCarToolStripMenuItem
             // 
             this.modifyCarToolStripMenuItem.Name = "modifyCarToolStripMenuItem";
-            this.modifyCarToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.modifyCarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modifyCarToolStripMenuItem.Text = "Modify Car";
-            // 
-            // manageClientsToolStripMenuItem
-            // 
-            this.manageClientsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteClientsToolStripMenuItem,
-            this.changeClientInfoToolStripMenuItem,
-            this.setClientToAdminToolStripMenuItem});
-            this.manageClientsToolStripMenuItem.Name = "manageClientsToolStripMenuItem";
-            this.manageClientsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.manageClientsToolStripMenuItem.Text = "Clients";
-            // 
-            // deleteClientsToolStripMenuItem
-            // 
-            this.deleteClientsToolStripMenuItem.Name = "deleteClientsToolStripMenuItem";
-            this.deleteClientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteClientsToolStripMenuItem.Text = "Delete Clients";
-            // 
-            // changeClientInfoToolStripMenuItem
-            // 
-            this.changeClientInfoToolStripMenuItem.Name = "changeClientInfoToolStripMenuItem";
-            this.changeClientInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.changeClientInfoToolStripMenuItem.Text = "Change Client Info";
-            // 
-            // setClientToAdminToolStripMenuItem
-            // 
-            this.setClientToAdminToolStripMenuItem.Name = "setClientToAdminToolStripMenuItem";
-            this.setClientToAdminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.setClientToAdminToolStripMenuItem.Text = "Set Client To Admin";
-            // 
-            // manageCommandsToolStripMenuItem
-            // 
-            this.manageCommandsToolStripMenuItem.Name = "manageCommandsToolStripMenuItem";
-            this.manageCommandsToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.manageCommandsToolStripMenuItem.Text = " Commands";
-            this.manageCommandsToolStripMenuItem.Click += new System.EventHandler(this.manageCommandsToolStripMenuItem_Click);
             // 
             // pricesToolStripMenuItem
             // 
@@ -139,18 +99,25 @@
             this.pricesToolStripMenuItem.Text = "Prices";
             this.pricesToolStripMenuItem.Click += new System.EventHandler(this.pricesToolStripMenuItem_Click);
             // 
-            // routesToolStripMenuItem
-            // 
-            this.routesToolStripMenuItem.Name = "routesToolStripMenuItem";
-            this.routesToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.routesToolStripMenuItem.Text = "Routes";
-            this.routesToolStripMenuItem.Click += new System.EventHandler(this.routesToolStripMenuItem_Click);
-            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.viewToolStripMenuItem.Text = "Report";
+            // 
+            // morningJobsToolStripMenuItem
+            // 
+            this.morningJobsToolStripMenuItem.Name = "morningJobsToolStripMenuItem";
+            this.morningJobsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.morningJobsToolStripMenuItem.Text = "Morning Jobs";
+            this.morningJobsToolStripMenuItem.Click += new System.EventHandler(this.morningJobsToolStripMenuItem_Click);
+            // 
+            // manageClientsToolStripMenuItem
+            // 
+            this.manageClientsToolStripMenuItem.Name = "manageClientsToolStripMenuItem";
+            this.manageClientsToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.manageClientsToolStripMenuItem.Text = "Clients";
+            this.manageClientsToolStripMenuItem.Click += new System.EventHandler(this.manageClientsToolStripMenuItem_Click);
             // 
             // AdminMain
             // 
@@ -177,14 +144,10 @@
         private System.Windows.Forms.ToolStripMenuItem addCarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteCarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modifyCarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageClientsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteClientsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeClientInfoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setClientToAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pricesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem morningJobsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem routesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageCommandsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageClientsToolStripMenuItem;
     }
 }

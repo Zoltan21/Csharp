@@ -87,5 +87,12 @@ namespace ZDTSS_Transport
             this.Hide();
         }
 
+        private void manageClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clients allClients = new Clients(adminController);
+            allClients.MdiParent = this;
+            allClients.Show();
+        }
+
     }
 }

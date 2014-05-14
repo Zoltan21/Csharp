@@ -91,9 +91,35 @@ namespace ZDTSS_Transport
         {
             Database.sqlCon.Close();
             Database.sqlCon.Open();
-            string sqltext = "DELETE FROM prices WHERE p_Id=" + id;
+            string sqltext = "DELETE FROM prices WHERE priceId=" + id;
             SqlCommand cmd = new SqlCommand(sqltext, Database.sqlCon);
             cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            Database.sqlCon.Close();
+        }
+        public void deleteUser(int id)
+        {
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
+            string sqltext = "DELETE FROM users WHERE userId=" + id;
+            SqlCommand cmd = new SqlCommand(sqltext, Database.sqlCon);
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            Database.sqlCon.Close();
+        }
+        public void updateClientStatus(int id, int status)
+        {
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE users SET status=" + status +" WHERE userId=" +id, Database.sqlCon);
+                cmd.ExecuteNonQuery();
+            Database.sqlCon.Close();
+        }
+        public void updatePrice(int id, int price)
+        {
+            Database.sqlCon.Close();
+            Database.sqlCon.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE prices SET price=" + price + " WHERE priceId=" + id, Database.sqlCon);
             cmd.ExecuteNonQuery();
             Database.sqlCon.Close();
         }
@@ -126,6 +152,16 @@ namespace ZDTSS_Transport
             Database.sqlCon.Close();
             return dt;
             
+        }
+        public DataTable viewClients()
+        {
+            Database.sqlCon.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM users", Database.sqlCon);
+            sda.Fill(dt);
+            Database.sqlCon.Close();
+            return dt;
+
         }
 
 

@@ -27,7 +27,17 @@ namespace ZDTSS_Transport
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            if (tb_id.Text.Equals("") && tb_price.Text.Equals(""))
+            {
+                MessageBox.Show("All fields Must be completed");
+            }
+            else
+            {
+                int id = Convert.ToInt32(tb_id.Text);
+                int price = Convert.ToInt32(tb_price.Text);
+                adminController.updatePrice(id, price);
+                MessageBox.Show("Updated successful");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -36,7 +46,7 @@ namespace ZDTSS_Transport
             i = dataGridView1.SelectedCells[0].RowIndex;
             if (dataGridView1.Rows.Count > 1 && i != dataGridView1.Rows.Count - 1)
             {
-                int id = int.Parse(dataGridView1.Rows[i].Cells["p_Id"].Value.ToString());
+                int id = int.Parse(dataGridView1.Rows[i].Cells["priceId"].Value.ToString());
                 adminController.deletePrice(id);
                 dataGridView1.Rows.RemoveAt(dataGridView1.Rows[i].Index);
                 MessageBox.Show("Row Deleted");

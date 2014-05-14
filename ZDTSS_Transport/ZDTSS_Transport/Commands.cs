@@ -11,6 +11,7 @@ namespace ZDTSS_Transport
 {
     public partial class Commands : Form
     {
+        Command command = new Command();
         private AdminController adminController;
         public Commands(AdminController adminC)
         {
@@ -27,7 +28,25 @@ namespace ZDTSS_Transport
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-           
+            if (tb_id.Text.Equals("") && tb_vanid.Text.Equals("") && tb_wareid.Text.Equals("") && tb_originid.Text.Equals("") && tb_destinationid.Text.Equals("") && tb_time.Text.Equals("") && tb_customerid.Text.Equals("") && tb_status.Text.Equals(""))
+            {
+                MessageBox.Show("All fields Must be completed");
+            }
+            else
+            {
+            Command toEdit = new Command();
+            toEdit.CommandId = Convert.ToInt32(tb_id.Text);
+            toEdit.VanId = Convert.ToInt32(tb_vanid.Text);
+            toEdit.WareId = Convert.ToInt32(tb_wareid.Text);
+            toEdit.StartCityId = Convert.ToInt32(tb_originid.Text);
+            toEdit.DestCityId = Convert.ToInt32(tb_destinationid.Text);
+            toEdit.StartTime = Convert.ToDateTime(tb_time.Text);
+            toEdit.UserId = Convert.ToInt32(tb_customerid.Text);
+            toEdit.CommandStatus = Convert.ToInt32(tb_status.Text);
+            command.updateCommandInDb(toEdit);
+            MessageBox.Show("Updated successful");
+            }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -47,6 +66,16 @@ namespace ZDTSS_Transport
                 MessageBox.Show("Row Deleted");
 
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         

@@ -10,7 +10,7 @@ namespace ZDTSS_Transport
     public static class Database
     { //this is the default value, but it can be modified by the admin
         static string dbName = "ZDTSS_Transport";
-        static string serverName = @"NAGYZE-PC\SQLEXPRESS";
+        static string serverName = @"A-PC\SQLEXPRESS";
         public static SqlConnection sqlCon;
 
         //public SqlConnection SqlCon

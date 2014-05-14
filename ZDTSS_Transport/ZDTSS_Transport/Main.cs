@@ -52,7 +52,7 @@ namespace ZDTSS_Transport
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form EditProfile = new EditProfile();
+            Form EditProfile = new EditProfile(user);
             EditProfile.MdiParent = this;
             EditProfile.Show();
         }

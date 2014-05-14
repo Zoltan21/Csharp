@@ -74,8 +74,10 @@ namespace ZDTSS_Transport
         private void pricesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Prices allPrices = new Prices(adminController);
-            allPrices.Show(this);
-            this.Hide();
+            allPrices.MdiParent = this;
+            //allPrices.FormClosed += new FormClosedEventHandler(allPrices_FormClosed);
+            allPrices.Show();
+
         }
 
         private void routesToolStripMenuItem_Click(object sender, EventArgs e)

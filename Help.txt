@@ -1,0 +1,25 @@
+Welcome to ZDTSS_Transport application.
+
+The purpose of the application is to help the Client (You)  get it's goods 
+from a point to another with the help of a courier firm.
+
+The Client actions are :
+
+1.Command:-Add New Command
+ 	  -View Previous Commands
+
+2.Edit profile
+
+3.View Command status
+
+4.Help (Self explanatory)
+
+1.Add Command will show 2 windows : 
+	1st complete the fields with the information required
+	2nd window will show when the delivery date will
+
+2.Edit profile gives you the right to change information of your account
+	
+The name of the project comes from :
+ZDTSS (Zoltan , Dolha , Tibre , Simon , Stoica)
+

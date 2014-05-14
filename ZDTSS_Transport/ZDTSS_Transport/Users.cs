@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace ZDTSS_Transport
 {
@@ -123,18 +125,26 @@ namespace ZDTSS_Transport
             }
         }
 
-        private void updateUserInDb()
-        {
-            // updating a user
+        public void updateUserInDb(User user, int userId)
+        {// updating a user
+            Database.sqlCon.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE users SET firstName=@firstName, lastName=@lastName, phoneNumber=@phoneNumber ,userName=@userName, password=@password WHERE userId=@userId", Database.sqlCon);
             try
             {
-
+                cmd.Parameters.Add("@firstName", SqlDbType.NChar).Value = user.FirstName;
+                cmd.Parameters.Add("@lastName", SqlDbType.NChar).Value = user.LastName;
+                cmd.Parameters.Add("@phoneNumber", SqlDbType.NChar).Value = user.PhoneNumber;
+                cmd.Parameters.Add("@userName", SqlDbType.NChar).Value = user.UserName;
+                cmd.Parameters.Add("@password", SqlDbType.NChar).Value = user.Password;
+                cmd.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+            Database.sqlCon.Close();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ZDTSS_Transport
 {
@@ -52,7 +53,7 @@ namespace ZDTSS_Transport
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form EditProfile = new EditProfile();
+            Form EditProfile = new EditProfile(user);
             EditProfile.MdiParent = this;
             EditProfile.Show();
         }
@@ -70,6 +71,11 @@ namespace ZDTSS_Transport
             ViewStatus viewStatus =new ViewStatus();
             viewStatus.MdiParent = this;
             viewStatus.Show();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Users\a\Documents\GitHub\Csharp\helppdf.pdf");
         }
 
     }

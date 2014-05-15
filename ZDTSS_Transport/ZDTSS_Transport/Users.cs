@@ -141,10 +141,33 @@ namespace ZDTSS_Transport
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
             Database.sqlCon.Close();
         }
+
+        public DataTable viewStatus(User user,int userId)
+        {
+            Database.sqlCon.Open();
+            DataTable dt = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT commandId,startTime,commandPrice,commandStatus,users.userName FROM commands JOIN users ON commands.customerId=users.userId WHERE commands.customerId=users.userId", Database.sqlCon);
+
+            SqlCommand sqc = new SqlCommand("SELECT commandId,startTime,commandPrice,commandStatus,users.userName FROM commands JOIN users ON commands.customerId=users.userId WHERE customerId=@userId", Database.sqlCon);
+            try
+            {
+                sqc.Parameters.Add("@userId", SqlDbType.Int).Value = userId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            sda.SelectCommand = sqc;
+            sda.Fill(dt);
+
+            Database.sqlCon.Close();
+            return dt;
+
+        }
+
     }
 }

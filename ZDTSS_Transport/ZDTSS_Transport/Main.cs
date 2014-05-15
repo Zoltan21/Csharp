@@ -68,7 +68,7 @@ namespace ZDTSS_Transport
         private void commandStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //showing the command status
-            ViewStatus viewStatus =new ViewStatus();
+            ViewStatus viewStatus =new ViewStatus(user);
             viewStatus.MdiParent = this;
             viewStatus.Show();
         }

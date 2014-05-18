@@ -78,6 +78,28 @@ namespace ZDTSS_Transport
 
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                tb_id.Text = row.Cells["commandId"].Value.ToString();
+                tb_vanid.Text = row.Cells["vanId"].Value.ToString();
+                tb_wareid.Text = row.Cells["wareId"].Value.ToString();
+                tb_originid.Text = row.Cells["startCityId"].Value.ToString();
+                tb_destinationid.Text = row.Cells["destCityId"].Value.ToString();
+                tb_time.Text = row.Cells["startTime"].Value.ToString();
+                tb_priceid.Text = row.Cells["commandPrice"].Value.ToString();
+                tb_customerid.Text = row.Cells["customerID"].Value.ToString();
+                tb_status.Text = row.Cells["commandStatus"].Value.ToString();
+
+
+
+
+            }
+        }
+
         
     }
 }

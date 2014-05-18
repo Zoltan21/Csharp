@@ -53,6 +53,17 @@ namespace ZDTSS_Transport
                 MessageBox.Show("Updated successful");
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                tb_id.Text = row.Cells["userId"].Value.ToString();
+                tb_adminstatus.Text = row.Cells["status"].Value.ToString();
+            }
+        }
         
     }
 }

@@ -32,10 +32,10 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tb_id = new System.Windows.Forms.TextBox();
-            this.tb_price = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_price = new System.Windows.Forms.TextBox();
+            this.tb_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(523, 283);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupBox1
             // 
@@ -82,19 +83,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change price";
             // 
-            // tb_id
+            // label2
             // 
-            this.tb_id.Location = new System.Drawing.Point(130, 39);
-            this.tb_id.Name = "tb_id";
-            this.tb_id.Size = new System.Drawing.Size(100, 20);
-            this.tb_id.TabIndex = 3;
-            // 
-            // tb_price
-            // 
-            this.tb_price.Location = new System.Drawing.Point(130, 66);
-            this.tb_price.Name = "tb_price";
-            this.tb_price.Size = new System.Drawing.Size(100, 20);
-            this.tb_price.TabIndex = 4;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(50, 69);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Price";
             // 
             // label1
             // 
@@ -105,14 +101,19 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Price Id";
             // 
-            // label2
+            // tb_price
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 69);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Price";
+            this.tb_price.Location = new System.Drawing.Point(130, 66);
+            this.tb_price.Name = "tb_price";
+            this.tb_price.Size = new System.Drawing.Size(100, 20);
+            this.tb_price.TabIndex = 4;
+            // 
+            // tb_id
+            // 
+            this.tb_id.Location = new System.Drawing.Point(130, 39);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.Size = new System.Drawing.Size(100, 20);
+            this.tb_id.TabIndex = 3;
             // 
             // Prices
             // 

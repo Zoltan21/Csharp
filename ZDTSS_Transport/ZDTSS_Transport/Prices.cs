@@ -58,5 +58,17 @@ namespace ZDTSS_Transport
         {
             this.Hide();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+                tb_id.Text = row.Cells["priceId"].Value.ToString();
+                tb_price.Text = row.Cells["price"].Value.ToString();
+
+            }
+        }
     }
 }

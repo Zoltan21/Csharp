@@ -97,5 +97,12 @@ namespace ZDTSS_Transport
             allClients.Show();
         }
 
+        private void manageCarsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdminManageCars cars = new AdminManageCars();
+            cars.MdiParent = this;
+            cars.Show();
+        }
+
     }
 }

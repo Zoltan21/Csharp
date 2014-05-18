@@ -199,6 +199,19 @@ namespace ZDTSS_Transport
                     break;
             }
         }
+
+        public DataSet getCars()
+        {
+            SqlConnection sqlCon = new SqlConnection();
+            sqlCon.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
+            sqlCon.Open();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM vans", sqlCon);
+            da.Fill(ds, "vans");
+            sqlCon.Close();
+            return ds;
+        }
+
         //inserting cars into DB - Simon
         private void AddCar(string name, int speed, int weight, int volume, int consumption, int status)
         {

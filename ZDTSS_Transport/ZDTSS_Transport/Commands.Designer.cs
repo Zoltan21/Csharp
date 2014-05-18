@@ -68,7 +68,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(769, 357);
+            this.btnDelete.Location = new System.Drawing.Point(878, 387);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(600, 380);
+            this.dataGridView1.Size = new System.Drawing.Size(714, 487);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -145,6 +145,7 @@
             // 
             this.tb_id.Location = new System.Drawing.Point(66, 5);
             this.tb_id.Name = "tb_id";
+            this.tb_id.ReadOnly = true;
             this.tb_id.Size = new System.Drawing.Size(100, 20);
             this.tb_id.TabIndex = 12;
             // 
@@ -259,7 +260,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(606, 0);
+            this.groupBox1.Location = new System.Drawing.Point(720, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 334);
             this.groupBox1.TabIndex = 23;
@@ -270,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 419);
+            this.ClientSize = new System.Drawing.Size(1078, 516);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDelete);

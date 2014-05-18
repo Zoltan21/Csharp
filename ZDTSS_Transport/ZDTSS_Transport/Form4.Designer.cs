@@ -75,6 +75,7 @@
             // 
             this.tb_id.Location = new System.Drawing.Point(85, 10);
             this.tb_id.Name = "tb_id";
+            this.tb_id.ReadOnly = true;
             this.tb_id.Size = new System.Drawing.Size(100, 20);
             this.tb_id.TabIndex = 3;
             this.tb_id.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

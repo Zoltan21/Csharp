@@ -31,6 +31,7 @@ namespace ZDTSS_Transport
                 allCommands =new Commands(adminController);
                 allCommands.MdiParent = this;
                 allCommands.FormClosed += new FormClosedEventHandler(allCommands_FormClosed);
+                allCommands.WindowState = FormWindowState.Maximized;
                 allCommands.Show();
             }
             else
@@ -76,6 +77,7 @@ namespace ZDTSS_Transport
             Prices allPrices = new Prices(adminController);
             allPrices.MdiParent = this;
             //allPrices.FormClosed += new FormClosedEventHandler(allPrices_FormClosed);
+            allPrices.WindowState = FormWindowState.Maximized;
             allPrices.Show();
 
         }
@@ -91,6 +93,7 @@ namespace ZDTSS_Transport
         {
             Clients allClients = new Clients(adminController);
             allClients.MdiParent = this;
+            allClients.WindowState = FormWindowState.Maximized;
             allClients.Show();
         }
 

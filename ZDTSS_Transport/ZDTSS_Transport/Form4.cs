@@ -41,17 +41,20 @@ namespace ZDTSS_Transport
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-            if (tb_id.Text.Equals("") && tb_adminstatus.Text.Equals(""))
+            if (tb_id.Text.Equals("") && tb_adminstatus.Text.Equals("") )
             {
                 MessageBox.Show("All fields Must be completed");
             }
-            else
+            else if (tb_adminstatus.Text.Equals("0") || tb_adminstatus.Text.Equals("1"))
             {
                 int id = Convert.ToInt32(tb_id.Text);
                 int adminStatus = Convert.ToInt32(tb_adminstatus.Text);
                 adminController.updateClientStatus(id, adminStatus);
                 MessageBox.Show("Updated successful");
             }
+    else{
+        MessageBox.Show("Status must be 0-Client 1-Admin");
+    }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

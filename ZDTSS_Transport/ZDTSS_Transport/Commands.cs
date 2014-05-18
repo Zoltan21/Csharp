@@ -19,11 +19,11 @@ namespace ZDTSS_Transport
             adminController = adminC;
             DataTable dt = adminC.viewCommands();
             dataGridView1.DataSource = dt;
-        }      
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -34,17 +34,17 @@ namespace ZDTSS_Transport
             }
             else
             {
-            Command toEdit = new Command();
-            toEdit.CommandId = Convert.ToInt32(tb_id.Text);
-            toEdit.VanId = Convert.ToInt32(tb_vanid.Text);
-            toEdit.WareId = Convert.ToInt32(tb_wareid.Text);
-            toEdit.StartCityId = Convert.ToInt32(tb_originid.Text);
-            toEdit.DestCityId = Convert.ToInt32(tb_destinationid.Text);
-            toEdit.StartTime = Convert.ToDateTime(tb_time.Text);
-            toEdit.UserId = Convert.ToInt32(tb_customerid.Text);
-            toEdit.CommandStatus = Convert.ToInt32(tb_status.Text);
-            command.updateCommandInDb(toEdit);
-            MessageBox.Show("Updated successful");
+                Command toEdit = new Command();
+                toEdit.CommandId = Convert.ToInt32(tb_id.Text);
+                toEdit.VanId = Convert.ToInt32(tb_vanid.Text);
+                toEdit.WareId = Convert.ToInt32(tb_wareid.Text);
+                toEdit.StartCityId = Convert.ToInt32(tb_originid.Text);
+                toEdit.DestCityId = Convert.ToInt32(tb_destinationid.Text);
+                toEdit.StartTime = Convert.ToDateTime(tb_time.Text);
+                toEdit.UserId = Convert.ToInt32(tb_customerid.Text);
+                toEdit.CommandStatus = Convert.ToInt32(tb_status.Text);
+                command.updateCommandInDb(toEdit);
+                MessageBox.Show("Updated successful");
             }
 
         }
@@ -78,28 +78,25 @@ namespace ZDTSS_Transport
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+         {
+             if (e.RowIndex >= 0)
+             {
+                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
-                tb_id.Text = row.Cells["commandId"].Value.ToString();
-                tb_vanid.Text = row.Cells["vanId"].Value.ToString();
-                tb_wareid.Text = row.Cells["wareId"].Value.ToString();
-                tb_originid.Text = row.Cells["startCityId"].Value.ToString();
-                tb_destinationid.Text = row.Cells["destCityId"].Value.ToString();
-                tb_time.Text = row.Cells["startTime"].Value.ToString();
-                tb_priceid.Text = row.Cells["commandPrice"].Value.ToString();
-                tb_customerid.Text = row.Cells["customerID"].Value.ToString();
-                tb_status.Text = row.Cells["commandStatus"].Value.ToString();
+                 tb_id.Text = row.Cells["commandId"].Value.ToString();
+                 tb_vanid.Text = row.Cells["vanId"].Value.ToString();
+                 tb_wareid.Text = row.Cells["wareId"].Value.ToString();
+                 tb_originid.Text = row.Cells["startCityId"].Value.ToString();
+                 tb_destinationid.Text = row.Cells["destCityId"].Value.ToString();
+                 tb_time.Text = row.Cells["startTime"].Value.ToString();
+                 tb_priceid.Text = row.Cells["commandPrice"].Value.ToString();
+                 tb_customerid.Text = row.Cells["customerID"].Value.ToString();
+                 tb_status.Text = row.Cells["commandStatus"].Value.ToString();
+             }
+         }
 
-
-
-
-            }
-        }
-
-        
+         
+         
     }
 }

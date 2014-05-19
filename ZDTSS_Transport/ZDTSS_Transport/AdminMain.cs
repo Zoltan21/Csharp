@@ -85,7 +85,7 @@ namespace ZDTSS_Transport
 
         private void manageClientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clients allClients = new Clients(adminController);
+            AdminManageClients allClients = new AdminManageClients();
             allClients.MdiParent = this;
             allClients.WindowState = FormWindowState.Maximized;
             allClients.Show();

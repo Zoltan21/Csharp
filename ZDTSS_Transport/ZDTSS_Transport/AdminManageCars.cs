@@ -20,16 +20,30 @@ namespace ZDTSS_Transport
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            CarConfirmation addCar = new CarConfirmation("New Car", "AddCar", vid, CarNameBox.Text.ToString(), CarSpeedBox.Text.ToString(), CarWeightBox.Text.ToString(), CarVolumeBox.Text.ToString(), CarConsumptionBox.Text.ToString(), CarStatusBox.Text.ToString());
-            addCar.Show(this);
-            this.Hide();
+            if (CarNameBox.Text.Equals("") && CarSpeedBox.Text.Equals("") && CarWeightBox.Text.Equals("") && CarVolumeBox.Text.Equals("")&&CarConsumptionBox.Text.Equals("")&&CarStatusBox.Text.Equals(""))
+            {
+                MessageBox.Show("All fields Must be completed");
+            }
+            else
+            {
+                CarConfirmation addCar = new CarConfirmation("New Car", "AddCar", vid, CarNameBox.Text.ToString(), CarSpeedBox.Text.ToString(), CarWeightBox.Text.ToString(), CarVolumeBox.Text.ToString(), CarConsumptionBox.Text.ToString(), CarStatusBox.Text.ToString());
+                addCar.Show(this);
+                this.Hide();
+            }
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            CarConfirmation updateCar = new CarConfirmation("Update Car", "UpdateCar", vid, CarNameBox.Text.ToString(), CarSpeedBox.Text.ToString(), CarWeightBox.Text.ToString(), CarVolumeBox.Text.ToString(), CarConsumptionBox.Text.ToString(), CarStatusBox.Text.ToString());
-            updateCar.Show(this);
-            this.Hide();
+            if (CarNameBox.Text.Equals("") && CarSpeedBox.Text.Equals("") && CarWeightBox.Text.Equals("") && CarVolumeBox.Text.Equals("") && CarConsumptionBox.Text.Equals("") && CarStatusBox.Text.Equals(""))
+            {
+                MessageBox.Show("All fields Must be completed");
+            }
+            else
+            {
+                CarConfirmation updateCar = new CarConfirmation("Update Car", "UpdateCar", vid, CarNameBox.Text.ToString(), CarSpeedBox.Text.ToString(), CarWeightBox.Text.ToString(), CarVolumeBox.Text.ToString(), CarConsumptionBox.Text.ToString(), CarStatusBox.Text.ToString());
+                updateCar.Show(this);
+                this.Hide();
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

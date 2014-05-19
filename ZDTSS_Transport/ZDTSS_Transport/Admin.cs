@@ -316,6 +316,18 @@ namespace ZDTSS_Transport
                     break;
             }
         }
+        public DataSet getUsers()
+        {
+            SqlConnection sqlCon = new SqlConnection();
+            sqlCon.ConnectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
+            sqlCon.Open();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM users", sqlCon);
+            da.Fill(ds, "users");
+            sqlCon.Close();
+            return ds;
+        }
+
 
         private void AddClient(string fName, string lName, string phone, string uName, string pass, int status)
         {

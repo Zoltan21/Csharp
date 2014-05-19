@@ -148,21 +148,8 @@
     <Compile Include="ReportCommand.Designer.cs">
       <DependentUpon>ReportCommand.cs</DependentUpon>
     </Compile>
-    <Compile Include="Route.cs" />
-    <Compile Include="Routes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Routes.Designer.cs">
-      <DependentUpon>Routes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs" />
     <Compile Include="Van.cs" />
-    <Compile Include="ViewCommand.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewCommand.Designer.cs">
-      <DependentUpon>ViewCommand.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewStatus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,17 +213,12 @@
     <EmbeddedResource Include="ReportCommand.resx">
       <DependentUpon>ReportCommand.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Routes.resx">
-      <DependentUpon>Routes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewCommand.resx">
-      <DependentUpon>ViewCommand.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ViewStatus.resx">
       <DependentUpon>ViewStatus.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

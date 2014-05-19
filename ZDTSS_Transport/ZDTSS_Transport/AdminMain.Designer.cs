@@ -33,7 +33,6 @@
             this.manageCarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.morningJobsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +45,6 @@
             this.manageCarsToolStripMenuItem,
             this.manageClientsToolStripMenuItem,
             this.pricesToolStripMenuItem,
-            this.viewToolStripMenuItem,
             this.morningJobsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -82,12 +80,6 @@
             this.pricesToolStripMenuItem.Text = "Prices";
             this.pricesToolStripMenuItem.Click += new System.EventHandler(this.pricesToolStripMenuItem_Click);
             // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.viewToolStripMenuItem.Text = "Report";
-            // 
             // morningJobsToolStripMenuItem
             // 
             this.morningJobsToolStripMenuItem.Name = "morningJobsToolStripMenuItem";
@@ -119,7 +111,6 @@
         private System.Windows.Forms.ToolStripMenuItem manageCarsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pricesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem morningJobsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageClientsToolStripMenuItem;
     }

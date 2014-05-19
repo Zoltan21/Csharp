@@ -44,12 +44,6 @@ namespace ZDTSS_Transport
             //throw new NotImplementedException();
         }
 
-        private void viewPreviousCommandsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form ViewCommand = new ViewCommand();
-            ViewCommand.MdiParent = this;
-            ViewCommand.Show();
-        }
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZDTSS_Transport.AdminController" Collapsed="true">
+    <Position X="16.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QEAgAIAAAQQAEAACAAIAgAAAAEAAAAAAAEQDCBgAARU=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.AdminMain" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAAgBAACCCBAAAAAECIACDCAABAAAAYIAAAQAAAgAA=</HashCode>
+      <FileName>AdminMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.AdminManageCars" Collapsed="true">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAACAAkBEAAAGAAQBGAAkAAGAAACAAAIBABAA=</HashCode>
+      <FileName>AdminManageCars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.AuthentficationController" Collapsed="true">
+    <Position X="16.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAAAAAQAAAAIAAAAAAAAAAAAAAQAAAAAAEYA=</HashCode>
+      <FileName>AuthentficationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.CarConfirmation" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACRAABEACgiAAEgCCAAAAAABCSAIoAEBAAg=</HashCode>
+      <FileName>CarConfirmation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.City" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAWgAAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.ClientController" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAAAEAICAAAAAAAAAABAAAAEAAAAAAQAECBAAACA=</HashCode>
+      <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAgEAIAABQCiAAgA4gAIAMECAAEBCgIAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZDTSS_Transport.Commands" Collapsed="true">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAQACCABABAAAACABgASBAwgUEAAASEEAQAAAQY=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Database" Collapsed="true">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABIAAAAAAgAAAAAAAAAAAAAAAAAAAABAEAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.EditCommand" Collapsed="true">
+    <Position X="10.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAABAQAACAAABCIAAIAAAAEEAAAAEAAAA=</HashCode>
+      <FileName>EditCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.EditProfile" Collapsed="true">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAABAACEBAJAAACCACAACAAAAAIAABgAAAIACAQA=</HashCode>
+      <FileName>EditProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Login" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAQACQAABAAAACAAAACAAAACAAIAAAAAABgAUA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Register" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAAQACAAABAAAACAAIACAABAAABIAAAAAQAkAkA=</HashCode>
+      <FileName>Form2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Clients" Collapsed="true">
+    <Position X="2.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAABAAAACQAgiSCAggAAAAACAAAQAAAQQ=</HashCode>
+      <FileName>Form4.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.JobController" Collapsed="true">
+    <Position X="16.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAwAAQAAgACIAAAADCACAAgAgAAEEAAYAAAIAAAIiAM=</HashCode>
+      <FileName>JobController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Jobs" Collapsed="true">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABACCAAAhAAQACAAAgCCAgAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Jobs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Main" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASAAAAEgASAAAAAAAACBAAQDCACAgQAQAiAAAABAQQA=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.NewCommand" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIABCCAAABAAAACAABQCAAAAAQKAAAAAAAAAAQE=</HashCode>
+      <FileName>NewCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Prices" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAACCAAABAAAACAAgACAAggQAAAASAAAABAAQI=</HashCode>
+      <FileName>Prices.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Program" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.RegionsJob" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAgAAAAAAAAEAAAAAAgAAgAAAgAAAAIAgAA=</HashCode>
+      <FileName>RegionsJob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.ReportCommand" Collapsed="true">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAIACgCACABAAAAGgAAACAAQEAQIAAABgAQAQAIA=</HashCode>
+      <FileName>ReportCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.User" Collapsed="true">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCQACEAEAgBAAAIACAAAQAiAAEAAAAACAQABCgEAAAg=</HashCode>
+      <FileName>Users.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Van" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGBggAAAIIIAAAAAAGAACBAAAA4QAEAEAAAAAAAAA=</HashCode>
+      <FileName>Van.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.ViewStatus" Collapsed="true">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAEAAAAIACACAACAAgAAAIAAAAAAAAAAQA=</HashCode>
+      <FileName>ViewStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Ware" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAgAAQgAAQAIAAAAQAAAAEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Ware.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ZDTSS_Transport.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAIIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZDTSS_Transport.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

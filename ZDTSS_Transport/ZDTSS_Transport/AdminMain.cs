@@ -82,12 +82,6 @@ namespace ZDTSS_Transport
 
         }
 
-        private void routesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Routes allRoutes = new Routes(adminController);
-            allRoutes.Show(this);
-            this.Hide();
-        }
 
         private void manageClientsToolStripMenuItem_Click(object sender, EventArgs e)
         {

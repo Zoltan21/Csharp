@@ -74,7 +74,6 @@
             this.viewPreviousCommandsToolStripMenuItem.Name = "viewPreviousCommandsToolStripMenuItem";
             this.viewPreviousCommandsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.viewPreviousCommandsToolStripMenuItem.Text = "View Previous Commands";
-            this.viewPreviousCommandsToolStripMenuItem.Click += new System.EventHandler(this.viewPreviousCommandsToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 

@@ -31,11 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.commandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewCommandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewPreviousCommandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewCommandStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.commandStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +42,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.commandToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -57,7 +53,7 @@
             // 
             this.commandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewCommandToolStripMenuItem,
-            this.viewPreviousCommandsToolStripMenuItem});
+            this.viewCommandStatusToolStripMenuItem});
             this.commandToolStripMenuItem.Name = "commandToolStripMenuItem";
             this.commandToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.commandToolStripMenuItem.Text = "Command";
@@ -65,45 +61,23 @@
             // addNewCommandToolStripMenuItem
             // 
             this.addNewCommandToolStripMenuItem.Name = "addNewCommandToolStripMenuItem";
-            this.addNewCommandToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.addNewCommandToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.addNewCommandToolStripMenuItem.Text = "Add New Command";
             this.addNewCommandToolStripMenuItem.Click += new System.EventHandler(this.addNewCommandToolStripMenuItem_Click);
             // 
-            // viewPreviousCommandsToolStripMenuItem
+            // viewCommandStatusToolStripMenuItem
             // 
-            this.viewPreviousCommandsToolStripMenuItem.Name = "viewPreviousCommandsToolStripMenuItem";
-            this.viewPreviousCommandsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.viewPreviousCommandsToolStripMenuItem.Text = "View Previous Commands";
+            this.viewCommandStatusToolStripMenuItem.Name = "viewCommandStatusToolStripMenuItem";
+            this.viewCommandStatusToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.viewCommandStatusToolStripMenuItem.Text = "View Command Status";
+            this.viewCommandStatusToolStripMenuItem.Click += new System.EventHandler(this.viewCommandStatusToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editProfileToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // editProfileToolStripMenuItem
-            // 
-            this.editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            this.editProfileToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.editProfileToolStripMenuItem.Text = "Edit Profile";
-            this.editProfileToolStripMenuItem.Click += new System.EventHandler(this.editProfileToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.commandStatusToolStripMenuItem});
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // commandStatusToolStripMenuItem
-            // 
-            this.commandStatusToolStripMenuItem.Name = "commandStatusToolStripMenuItem";
-            this.commandStatusToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
-            this.commandStatusToolStripMenuItem.Text = "Command Status";
-            this.commandStatusToolStripMenuItem.Click += new System.EventHandler(this.commandStatusToolStripMenuItem_Click);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.editToolStripMenuItem.Text = "Edit Profile";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -135,11 +109,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem commandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewCommandToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewPreviousCommandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editProfileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem commandStatusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewCommandStatusToolStripMenuItem;
     }
 }

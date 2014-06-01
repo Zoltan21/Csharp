@@ -46,5 +46,10 @@ namespace ZDTSS_Transport
 
 
         }
+
+        private void btn_Decline_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

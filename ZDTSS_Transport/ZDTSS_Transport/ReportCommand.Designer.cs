@@ -72,6 +72,7 @@
             this.btn_Decline.TabIndex = 1;
             this.btn_Decline.Text = "Decline";
             this.btn_Decline.UseVisualStyleBackColor = true;
+            this.btn_Decline.Click += new System.EventHandler(this.btn_Decline_Click);
             // 
             // panel2
             // 

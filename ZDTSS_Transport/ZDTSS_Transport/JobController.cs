@@ -42,8 +42,8 @@ namespace ZDTSS_Transport
             set { regions = value; }
         }
 
-        public void viewMorningJobs()
-        {
+        public void commandsSplitting()
+        {     
             DataSet commandsDataSet = getUnselectedCommands();
             List<Command> commands = getCommandsList(commandsDataSet);
 
@@ -52,7 +52,12 @@ namespace ZDTSS_Transport
                 splitCommand(commands[i]); // updates the db and insert the splitted elements
                 //MessageBox.Show(commands[i].ToString());
             }
-            getCommandsSeparately();//getting the commands for each region;
+            getCommandsSeparately();//getting the commands for each region
+        }
+
+        public void viewMorningJobs()
+        {
+           ;
             //list of all the jobs inside each region
             foreach(RegionsJob rj in regionsJobs)
             {

@@ -21,7 +21,7 @@ namespace ZDTSS_Transport
                 lstRegions.Items.Add(regionCity.CityName);
             }
 
-            jobController.viewMorningJobs();
+            jobController.commandsSplitting();
 
         }
 
@@ -120,6 +120,13 @@ namespace ZDTSS_Transport
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnAddVans_Click(object sender, EventArgs e)
+        {
+            //adding vans to the commands (Put wares into vans)
+
+            jobController.viewMorningJobs();
         }
 
     }

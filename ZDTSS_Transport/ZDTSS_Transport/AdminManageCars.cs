@@ -59,6 +59,26 @@ namespace ZDTSS_Transport
         {
             DataSet vans = controller.getCars();
             dataGridView1.DataSource = vans.Tables["vans"];
+            dataGridColor();
+        }
+
+        private void dataGridColor()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells["vanStatus"].Value.ToString() == "1")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Green;
+                }
+                else if (row.Cells["vanStatus"].Value.ToString() == "2")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if (row.Cells["vanStatus"].Value.ToString() == "3")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
         }
     }
 }

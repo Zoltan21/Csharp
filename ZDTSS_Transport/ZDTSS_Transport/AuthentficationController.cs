@@ -12,20 +12,6 @@ namespace ZDTSS_Transport
         //use get and setter properties to access from the outside of the class!!!
 
         /// <summary>
-        /// it don't need to instantieate here
-        /// </summary>
-        private User user;
-        /// <summary>
-        /// it don't need to instantieate here
-        /// </summary>
-
-        public User User
-        {
-            get { return user; }
-            set { user = value; }
-        }
-
-        /// <summary>
         /// using the db,
         /// </summary>
         public User login(string userName, string password)

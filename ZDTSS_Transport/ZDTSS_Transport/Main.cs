@@ -45,13 +45,6 @@ namespace ZDTSS_Transport
         }
 
 
-        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form EditProfile = new EditProfile(user);
-            EditProfile.MdiParent = this;
-            EditProfile.Show();
-        }
-
         private void editCommandToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form ManageCommand = new ManageCommands();
@@ -59,18 +52,28 @@ namespace ZDTSS_Transport
             ManageCommand.Show();
         }
 
-        private void commandStatusToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //showing the command status
-            ViewStatus viewStatus =new ViewStatus(user);
+            Process.Start(@"C:\Users\NagyZe\Documents\GitHub\Csharp\helppdf.pdf");
+        }
+
+        private void viewCommandStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewStatus viewStatus = new ViewStatus(user);
             viewStatus.MdiParent = this;
             viewStatus.Show();
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Users\a\Documents\GitHub\Csharp\helppdf.pdf");
+            Form EditProfile = new EditProfile(user);
+            EditProfile.MdiParent = this;
+            EditProfile.Show();
         }
+
+
+
 
     }
 }

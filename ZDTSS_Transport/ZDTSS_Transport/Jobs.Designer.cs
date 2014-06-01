@@ -33,6 +33,7 @@
             this.lstType = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddVans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,11 +93,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(904, 307);
             this.dataGridView1.TabIndex = 6;
             // 
+            // btnAddVans
+            // 
+            this.btnAddVans.Location = new System.Drawing.Point(91, 425);
+            this.btnAddVans.Name = "btnAddVans";
+            this.btnAddVans.Size = new System.Drawing.Size(75, 23);
+            this.btnAddVans.TabIndex = 7;
+            this.btnAddVans.Text = "Add Vans";
+            this.btnAddVans.UseVisualStyleBackColor = true;
+            this.btnAddVans.Click += new System.EventHandler(this.btnAddVans_Click);
+            // 
             // Jobs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 525);
+            this.Controls.Add(this.btnAddVans);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstType);
@@ -119,5 +131,6 @@
         private System.Windows.Forms.ListBox lstType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAddVans;
     }
 }

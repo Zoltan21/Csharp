@@ -46,6 +46,10 @@
             this.UpdateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelYellow = new System.Windows.Forms.Label();
+            this.labelGreen = new System.Windows.Forms.Label();
+            this.labelRed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,7 +60,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(491, 294);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(777, 294);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -170,7 +175,7 @@
             this.groupBox1.Controls.Add(this.CarWeightBox);
             this.groupBox1.Controls.Add(this.CarSpeedBox);
             this.groupBox1.Controls.Add(this.CarNameBox);
-            this.groupBox1.Location = new System.Drawing.Point(509, 12);
+            this.groupBox1.Location = new System.Drawing.Point(806, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(254, 198);
             this.groupBox1.TabIndex = 13;
@@ -212,18 +217,62 @@
             this.groupBox2.Controls.Add(this.DeleteButton);
             this.groupBox2.Controls.Add(this.UpdateButton);
             this.groupBox2.Controls.Add(this.AddButton);
-            this.groupBox2.Location = new System.Drawing.Point(509, 216);
+            this.groupBox2.Location = new System.Drawing.Point(806, 216);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(254, 48);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(123, 345);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(373, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Van status is 1 when it is available, 2 when it is busy and 3 when it is on repai" +
+    "r";
+            // 
+            // labelYellow
+            // 
+            this.labelYellow.AutoSize = true;
+            this.labelYellow.BackColor = System.Drawing.Color.Yellow;
+            this.labelYellow.Location = new System.Drawing.Point(436, 385);
+            this.labelYellow.Name = "labelYellow";
+            this.labelYellow.Size = new System.Drawing.Size(50, 13);
+            this.labelYellow.TabIndex = 21;
+            this.labelYellow.Text = "On repair";
+            // 
+            // labelGreen
+            // 
+            this.labelGreen.AutoSize = true;
+            this.labelGreen.BackColor = System.Drawing.Color.Green;
+            this.labelGreen.Location = new System.Drawing.Point(275, 385);
+            this.labelGreen.Name = "labelGreen";
+            this.labelGreen.Size = new System.Drawing.Size(50, 13);
+            this.labelGreen.TabIndex = 20;
+            this.labelGreen.Text = "Available";
+            // 
+            // labelRed
+            // 
+            this.labelRed.AutoSize = true;
+            this.labelRed.BackColor = System.Drawing.Color.Red;
+            this.labelRed.Location = new System.Drawing.Point(91, 385);
+            this.labelRed.Name = "labelRed";
+            this.labelRed.Size = new System.Drawing.Size(30, 13);
+            this.labelRed.TabIndex = 19;
+            this.labelRed.Text = "Busy";
+            // 
             // AdminManageCars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 318);
+            this.ClientSize = new System.Drawing.Size(1188, 440);
+            this.Controls.Add(this.labelYellow);
+            this.Controls.Add(this.labelGreen);
+            this.Controls.Add(this.labelRed);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
@@ -235,6 +284,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -258,5 +308,9 @@
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelYellow;
+        private System.Windows.Forms.Label labelGreen;
+        private System.Windows.Forms.Label labelRed;
     }
 }

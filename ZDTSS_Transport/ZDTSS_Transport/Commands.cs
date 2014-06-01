@@ -78,11 +78,13 @@ namespace ZDTSS_Transport
 
         }
 
-         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+
+         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
          {
-             if (e.RowIndex >= 0)
+
+             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
              {
-                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
                  tb_id.Text = row.Cells["commandId"].Value.ToString();
                  tb_vanid.Text = row.Cells["vanId"].Value.ToString();
@@ -94,8 +96,9 @@ namespace ZDTSS_Transport
                  tb_customerid.Text = row.Cells["customerID"].Value.ToString();
                  tb_status.Text = row.Cells["commandStatus"].Value.ToString();
              }
-         }
 
+         }
+    
          
          
     }

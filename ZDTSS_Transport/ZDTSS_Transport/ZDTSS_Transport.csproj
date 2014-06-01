@@ -59,6 +59,12 @@
     <Compile Include="AdminManageCars.Designer.cs">
       <DependentUpon>AdminManageCars.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminManageClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminManageClients.Designer.cs">
+      <DependentUpon>AdminManageClients.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthentficationController.cs" />
     <Compile Include="CarConfirmation.cs">
       <SubType>Form</SubType>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminManageCars.resx">
       <DependentUpon>AdminManageCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManageClients.resx">
+      <DependentUpon>AdminManageClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarConfirmation.resx">
       <DependentUpon>CarConfirmation.cs</DependentUpon>

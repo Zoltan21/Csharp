@@ -72,6 +72,11 @@ namespace ZDTSS_Transport
             EditProfile.Show();
         }
 
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

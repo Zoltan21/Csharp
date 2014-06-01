@@ -12,7 +12,6 @@ namespace ZDTSS_Transport
     {
         private int commandId;
         private int vanId;
-        private int driverId;
         private int wareId;
         private int startCityId;
         private int destCityId;
@@ -44,12 +43,6 @@ namespace ZDTSS_Transport
         {
             get { return vanId; }
             set { vanId = value; }
-        }
-
-        public int DriverId
-        {
-            get { return driverId; }
-            set { driverId = value; }
         }
 
         public int WareId

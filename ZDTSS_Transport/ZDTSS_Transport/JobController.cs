@@ -57,7 +57,6 @@ namespace ZDTSS_Transport
 
         public void viewMorningJobs()
         {
-           ;
             //list of all the jobs inside each region
             foreach(RegionsJob rj in regionsJobs)
             {
@@ -588,8 +587,83 @@ namespace ZDTSS_Transport
         private void shortestPath(List<Command> commandList, int type)
         {
             //getting the cities which are in the list of commands
-            //type refers to inter collect--1 or divide--2 
+            //type refers to inter collect--1 or divide--2
+        }
 
+        private string getUserName(int userId)
+        {
+            Database.sqlCon.Open();
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            User city = new User();
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT firstName,lastName FROM users WHERE userId= " + userId, Database.sqlCon);
+            //getting the dataset from the adapter
+
+            da.Fill(ds, "users");
+            dt = ds.Tables["users"];
+            //closing the connection
+            string name=" ";
+            foreach (DataRow dr in dt.Rows)
+            {
+                name = (string)dr["firstName"]+" " +(string)dr["lastName"];
+            }
+
+            Database.sqlCon.Close();
+            return name;
+
+        }
+
+
+        private City getCity(int cityId)
+        {
+            Database.sqlCon.Open();
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            City city = new City();
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM cities WHERE cityId= " + cityId,Database.sqlCon);
+            //getting the dataset from the adapter
+
+            da.Fill(ds, "cities");
+            dt = ds.Tables["cities"];
+            //closing the connection
+            foreach (DataRow dr in dt.Rows)
+            {           
+                city.CityId = (int)dr["cityId"];
+                city.CityName = (string)dr["cityName"];
+                city.Region = (string)dr["region"];
+            }
+
+            Database.sqlCon.Close();
+            return city;
+        }
+
+        private string getDriverName(int vanId)
+        {
+            Database.sqlCon.Open();
+
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+            SqlDataAdapter da = new SqlDataAdapter("SELECT driver FROM vans WHERE vanId= " + vanId, Database.sqlCon);
+            //getting the dataset from the adapter
+
+            da.Fill(ds, "vans");
+            dt = ds.Tables["vans"];
+            //closing the connection
+            string name = " ";
+            foreach (DataRow dr in dt.Rows)
+            {
+                name = (string)dr["driver"];
+            }
+
+            Database.sqlCon.Close();
+            return name;
         }
 
         public DataTable convertToDatatable<T>(List<T> data)
@@ -600,22 +674,138 @@ namespace ZDTSS_Transport
             for (int i = 0; i < props.Count; i++)
             {
                 PropertyDescriptor prop = props[i];
-                //if (prop.Name.ToString() != "Ware")
-                //{
-                    table.Columns.Add(prop.Name, prop.PropertyType);
-                //}
+                switch (prop.Name.ToString())
+                {
+                    case "StartCityId": table.Columns.Add("startCity", typeof(string));
+                        break;
+                    case "DestCityId": table.Columns.Add("destCity", typeof(string));
+                        break;
+                    case "UserId": table.Columns.Add("UserName", typeof(string));
+                        break;
+                        case "Ware": //do nothing, it does not appears there
+                            break;
+                    default: table.Columns.Add(prop.Name, prop.PropertyType); break;
+                }
             }
-            object[] values = new object[props.Count];
+            object[] values = new object[props.Count-1];
             foreach (T item in data)
             {
                 for (int i = 0; i < values.Length; i++)
                 {
-                    values[i] = props[i].GetValue(item);
+                    //MessageBox.Show(props[i].ToString());
+
+                    switch (props[i + 1].Name.ToString())
+                    {
+                        case "StartCityId": values[i] = getCity((int)props[i + 1].GetValue(item)).CityName;
+                            break;
+                        case "DestCityId": values[i] = getCity((int)props[i + 1].GetValue(item)).CityName;
+                            break;
+                        case "UserId": values[i] = getUserName((int)props[i + 1].GetValue(item));
+                            break;
+                        case "DriverId": values[i] = getDriverName((int)props[i + 1].GetValue(item));
+                            break;
+
+                        default: values[i] = props[i + 1].GetValue(item); break;
+                    }
                 }
                 table.Rows.Add(values);
             }
             return table;
         }
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //these functions are desing related
+
+        public void dataGridColor(DataGridView dataGridView1)
+        {
+            //each van has a different color
+            Random random = new Random();
+            //get the first van
+            int vanId = Convert.ToInt32(dataGridView1.Rows[0].Cells[2].Value);
+            Color color = Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (vanId == 0)
+                {
+                    color = Color.White;
+                }
+                else
+                {
+                    if (Convert.ToInt32(row.Cells[2].Value) == vanId)
+                    {
+                        row.DefaultCellStyle.BackColor = color;
+                    }
+                    else
+                    {
+                        vanId = Convert.ToInt32(row.Cells[2].Value);
+                        color = Color.FromArgb(random.Next(0, 255), random.Next(0, 255), random.Next(0, 255));
+                        row.DefaultCellStyle.BackColor = color;
+                    }
+                }
+            }
+        }
+
+        public void updateDataTable(ListBox lstType,ListBox lstRegions, DataGridView dataGridView1)
+        {
+            try
+            {
+                List<Command> cmdList = new List<Command>();
+                foreach (RegionsJob region in RegionsJobs)
+                {
+                    if (region.RegionName == lstRegions.SelectedItem.ToString())
+                    {
+                        if (lstType.SelectedItem.ToString() == "intern-Collect")
+                        {
+                            cmdList = region.CollectCommandsList;
+                        }
+                        else
+                        {
+                            cmdList = region.DivideCommandsList;
+                        }
+                    }
+                }
+                dataGridView1.DataSource = convertToDatatable(cmdList);
+                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dataGridColor(dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void updateDataTableExtern(ListBox lstType, ListBox lstRegions,DataGridView dataGridView1)
+        {
+            try
+            {
+                string opt = lstType.SelectedItem.ToString();
+                switch (opt)
+                {
+                    case "extern":
+                        lstRegions.Visible = false;
+                        dataGridView1.DataSource = convertToDatatable(ExternCommands);
+                        break;
+                    case "intern-Collect":
+                        lstRegions.Visible = true;
+                        break;
+                    case "intern-Divide":
+                        lstRegions.Visible = true;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
     }
+
 }

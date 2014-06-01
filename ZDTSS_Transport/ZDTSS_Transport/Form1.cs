@@ -25,7 +25,9 @@ namespace ZDTSS_Transport
 
         private void adminMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            this.Show();
+            
+            //Application.Exit();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

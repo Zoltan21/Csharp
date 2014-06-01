@@ -37,20 +37,24 @@ namespace ZDTSS_Transport
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int startCityId = clientController.getCityId(cmbFromList.SelectedItem.ToString());
-            int destCityId = clientController.getCityId(cmbToList.SelectedItem.ToString());
-            Command command = clientController.makeNewCommand(startCityId, destCityId, Convert.ToDateTime(monthCalendar1.SelectionRange.Start.ToString()),
-                             user.UserId, txtDescription.Text, (int)nrKgPerPallet.Value, (int)nrNrOfPallets.Value);
-            ReportCommand reportCom = new ReportCommand(command, clientController); //moving to the next form
-            reportCom.Show(); //showing
-            reportCom.MdiParent = this.MdiParent; //getting this new form under the Main parent
-            this.Close();
-
+            try
+            {
+                int startCityId = clientController.getCityId(cmbFromList.SelectedItem.ToString());
+                int destCityId = clientController.getCityId(cmbToList.SelectedItem.ToString());
+                Command command = clientController.makeNewCommand(startCityId, destCityId, Convert.ToDateTime(monthCalendar1.SelectionRange.Start.ToString()),
+                                 user.UserId, txtDescription.Text, (int)nrKgPerPallet.Value, (int)nrNrOfPallets.Value);
+                ReportCommand reportCom = new ReportCommand(command, clientController); //moving to the next form
+                reportCom.Show(); //showing
+                reportCom.MdiParent = this.MdiParent; //getting this new form under the Main parent
+                this.Close();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("ERROR! All the fields has to be completed!");
+            }
             //
         
         } //hiding this 
-
-
 
     }
 }

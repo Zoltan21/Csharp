@@ -60,7 +60,7 @@
             // 
             this.lstType.FormattingEnabled = true;
             this.lstType.Items.AddRange(new object[] {
-            "extern",
+            "Inter-Regional",
             "intern-Collect",
             "intern-Divide"});
             this.lstType.Location = new System.Drawing.Point(12, 34);

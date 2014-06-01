@@ -58,6 +58,7 @@ namespace ZDTSS_Transport
         public void viewMorningJobs()
         {
             //list of all the jobs inside each region
+
             foreach(RegionsJob rj in regionsJobs)
             {
                 //sorting commands
@@ -345,6 +346,7 @@ namespace ZDTSS_Transport
                 if (extrVar == 2)
                 {
                     //extern command
+                    command.VanId = 100;
                     externCommands.Add(command);
                     //commands.Remove(command);
                 }
@@ -788,8 +790,9 @@ namespace ZDTSS_Transport
                 string opt = lstType.SelectedItem.ToString();
                 switch (opt)
                 {
-                    case "extern":
+                    case "Inter-Regional":
                         lstRegions.Visible = false;
+
                         dataGridView1.DataSource = convertToDatatable(ExternCommands);
                         break;
                     case "intern-Collect":

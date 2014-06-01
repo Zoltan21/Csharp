@@ -41,8 +41,10 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.nrNrOfPallets = new System.Windows.Forms.NumericUpDown();
             this.nrKgPerPallet = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nrNrOfPallets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrKgPerPallet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -184,12 +186,23 @@
             0,
             0});
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ZDTSS_Transport.Properties.Resources.original;
+            this.pictureBox1.Location = new System.Drawing.Point(496, 133);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(420, 310);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
             // NewCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 492);
+            this.ClientSize = new System.Drawing.Size(928, 492);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.nrKgPerPallet);
             this.Controls.Add(this.nrNrOfPallets);
             this.Controls.Add(this.monthCalendar1);
@@ -208,6 +221,7 @@
             this.Text = "New Command";
             ((System.ComponentModel.ISupportInitialize)(this.nrNrOfPallets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrKgPerPallet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +242,6 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.NumericUpDown nrNrOfPallets;
         private System.Windows.Forms.NumericUpDown nrKgPerPallet;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

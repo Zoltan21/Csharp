@@ -59,15 +59,14 @@ namespace ZDTSS_Transport
             this.Hide();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
 
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
                 tb_id.Text = row.Cells["priceId"].Value.ToString();
                 tb_price.Text = row.Cells["price"].Value.ToString();
-
             }
         }
     }

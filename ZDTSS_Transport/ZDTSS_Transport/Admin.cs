@@ -332,7 +332,7 @@ namespace ZDTSS_Transport
         private void AddClient(string fName, string lName, string phone, string uName, string pass, int status)
         {
             SqlConnection sqlCon = new SqlConnection();
-            sqlCon.ConnectionString = @"Data Source=DAROACH-PC\SQLEXPRESS;Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
+            sqlCon.ConnectionString = @"Data Source=(local);Initial Catalog= ZDTSS_Transport; Integrated Security=True ";
             sqlCon.Open();
             SqlCommand cmd = new SqlCommand("INSERT Into users(firstName, lastName, phoneNumber, userName, password, status) VALUES (@fn, @ln, @ph, @un, @pass, @st)", sqlCon);
             cmd.Parameters.Add("@fn", SqlDbType.NChar).Value = fName;
